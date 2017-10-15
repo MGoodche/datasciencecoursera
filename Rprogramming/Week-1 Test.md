@@ -160,3 +160,63 @@ Explanation:
 47    21     191 14.9   77     6  16
 ```
 
+### 16) How many missing values are in the Ozone column of this data frame?
+Answer: 
+- 37
+
+Explanation:
+```[javascript]
+> missing <-subset(data,is.na(Ozone))
+> nrow(missing)
+[1] 37
+```
+### 17) What is the mean of the Ozone column in this dataset? Exclude missing values (coded as NA) from this calculation.
+Answer:
+- 42.1
+
+Explanation:
+```[javascript]
+> meanOzone <- subset(data, !is.na(Ozone), select = Ozone)
+> apply (meanOzone, 2, mean)
+   Ozone 
+42.12931 
+```
+
+### 18) Extract the subset of rows of the data frame where Ozone values are above 31 and Temp values are above 90. What is the mean of Solar.R in this subset?
+Answer:
+- 212.8
+
+Explanation:
+
+You need to construct a logical vector in R to match the question's requirements. Then use that logical vector to subset the data frame.
+```[javascript]
+> valuesOzone <- subset(data,data$Ozone>31 & data$Temp>90,select=Solar.R)
+> apply (valuesOzone, 2, mean)
+Solar.R 
+  212.8 
+```
+
+### 19) What is the mean of "Temp" when "Month" is equal to 6?
+Answer:
+- 79.1
+
+Explanation:
+```[javascript]
+> meanTemp <- subset(data,data$Month==6,select=Temp)
+> apply (meanTemp, 2, mean)
+Temp 
+79.1 
+```
+
+### 20) What was the maximum ozone value in the month of May (i.e. Month is equal to 5)?
+Answer:
+- 115
+
+Explanation:
+
+```[javascript]
+> maxOzone <-subset(data,!is.na(Ozone)&data$Month==5,select=Ozone)
+> apply (maxOzone, 2, max)
+Ozone 
+  115 
+```
