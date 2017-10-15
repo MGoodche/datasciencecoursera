@@ -51,3 +51,31 @@ x    1    3    5
 y    3    2   10
 
 ```
+
+### 7) A key property of vectors in R is that
+Answer: Elements of a vector all must be of the same class
+
+### 8) Suppose I have a list defined as x <- list(2, "a", "b", TRUE). What does x[[2]] give me? Select all that apply.
+Answer:
+- A character vector of length 1.
+- A character vector containing the letter "a".
+
+Explanation:
+```[javascript]
+> x <- list(2, "a", "b", TRUE)
+> x[[2]] 
+[1] "a"
+> class(x[[2]])
+[1] "character"
+```
+
+### 9) Suppose I have a vector x <- 1:4 and a vector y <- 2. What is produced by the expression x + y?
+Answer: A numeric vector with elements 3, 4, 5, 6.
+
+Explanation:
+
+```[javascript]
+> x <- 1:4 ; y <- 2
+> x + y
+[1] 3 4 5 6
+```
