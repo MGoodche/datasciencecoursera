@@ -16,6 +16,6 @@ Answer:
 - List
 
 ### 4) If I execute the expression x <- 4 in R, what is the class of the object `x' as determined by the `class()' function?
-> x <- 4
+`> x <- 4
 > class(x)
-> [1] "numeric"
+[1] "numeric"`
