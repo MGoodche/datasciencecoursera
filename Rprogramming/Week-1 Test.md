@@ -78,4 +78,25 @@ Explanation:
 > x <- 1:4 ; y <- 2
 > x + y
 [1] 3 4 5 6
+> class(x + y)
+[1] "numeric"
+```
+
+### 10) Suppose I have a vector x <- c(17, 14, 4, 5, 13, 12, 10) and I want to set all elements of this vector that are greater than 10 to be equal to 4. What R code achieves this? Select all that apply.
+Answer: 
+- x[x >= 11] <- 4
+- x[x > 10] <- 4
+
+Explanation:
+
+```[javascript]
+> x <- c(17, 14, 4, 5, 13, 12, 10)
+> x[x >= 11] <- 4
+> x
+[1]  4  4  4  5  4  4 10
+
+> x <- c(17, 14, 4, 5, 13, 12, 10)
+> x[x > 10] <- 4
+> x
+[1]  4  4  4  5  4  4 10
 ```
