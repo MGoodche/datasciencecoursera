@@ -9,13 +9,21 @@ Answer:
 - The freedom to prevent users from using the software for undesirable purposes.
 
 ### 3) In R the following are all atomic data types EXCEPT: (Select all that apply)
+Answer:
 - Array
 - Data frame
 - List
 - Matrix
 - List
 
-### 4) If I execute the expression x <- 4 in R, what is the class of the object `x' as determined by the `class()' function?
-`> x <- 4
+### 4) If I execute the expression x <- 4 in R, what is the class of the object x' as determined by the class()' function?
+Answer: Numeric
+Explanation:
+```[javascript]
+> x <- 4
 > class(x)
-[1] "numeric"`
+[1] "numeric"
+
+```
+
+### 5) What is the class of the object defined by x <- c(4, TRUE)?
