@@ -128,11 +128,35 @@ Explanation:
 
 ### 13) How many observations (i.e. rows) are in this data frame?
 Answer:
--153
+- 153
 
 Explanation:
 ```[javascript]
 > nrow(data)
 [1] 153
+```[javascript]
+
+### 14) Extract the last 2 rows of the data frame and print them to the console. What does the output look like?
+Answer:
+   Ozone Solar.R Wind Temp Month Day
+152    18     131  8.0   76     9  29
+153    20     223 11.5   68     9  30
+
+Explanation:
+```[javascript]
+> tail(data,2)
+    Ozone Solar.R Wind Temp Month Day
+152    18     131  8.0   76     9  29
+153    20     223 11.5   68     9  30
+```
+### 15) What is the value of Ozone in the 47th row?
+Answer:
+- 21
+
+Explanation:
+```[javascript]
+> data[47,]
+   Ozone Solar.R Wind Temp Month Day
+47    21     191 14.9   77     6  16
 ```
 
