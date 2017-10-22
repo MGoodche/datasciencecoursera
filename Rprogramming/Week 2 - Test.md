@@ -12,7 +12,7 @@ Answer: The number 27 is returned.
 
 Explanation: Because 'n' is not evaluated, it is not needed even though it is a formal argument.
 
-### 2) The following code will produce a warning in R.
+### 2) The following code will produce a warning in R. Why?
 ```[javascript]
 x <- 1:10
 if(x > 5) {
