@@ -7,16 +7,20 @@ cube <- function(x, n) {
 What is the result of running
 ```[javascript]
 cube(3)
-}
 ```
-Answer: The number 27 is returned
+Answer: The number 27 is returned.
+
 Explanation: Because 'n' is not evaluated, it is not needed even though it is a formal argument.
 
-### 2) The definition of free software consists of four freedoms (freedoms 0 through 3 ). Which of the following is NOT one of the freedoms that are part of the definition? Select all that apply.
+### 2) The following code will produce a warning in R.
+```[javascript]
+x <- 1:10
+if(x > 5) {
+        x <- 0
+}
+```
 Answer: 
-- The freedom to restrict access to the source code for the software.
-- The freedom to sell the software for any price.
-- The freedom to prevent users from using the software for undesirable purposes.
+'x' is a vector of length 10 and 'if' can only test a single logical statement.
 
 ### 3) In R the following are all atomic data types EXCEPT: (Select all that apply)
 Answer:
