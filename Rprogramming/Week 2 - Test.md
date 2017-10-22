@@ -22,7 +22,7 @@ if(x > 5) {
 Answer: 
 'x' is a vector of length 10 and 'if' can only test a single logical statement.
 
-### 3) Consider the following function
+### 3) Consider the following function. 
 ```[javascript]
 f <- function(x) {
         g <- function(y) {
@@ -32,14 +32,14 @@ f <- function(x) {
         x + g(x)
 }
 ```
-### If I then run in R
+### If I then run in R. What value is returned?
 ```[javascript]
 z <- 10
 f(3)
 ```
 Answer: 10
 
-### 4) Consider the following expression:
+### 4) Consider the following expression. What is the value of 'y' after evaluating this expression?
 ```[javascript]
 x <- 5
 y <- if(x < 3) {
@@ -52,7 +52,7 @@ Answer: 10
 
 
 
-### 5) Consider the following R function
+### 5) Consider the following R function. Which symbol in the above function is a free variable?
 ```[javascript]
 h <- function(x, y = NULL, d = 3L) {
         z <- cbind(x, d)
