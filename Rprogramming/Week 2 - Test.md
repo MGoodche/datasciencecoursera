@@ -4,7 +4,7 @@ cube <- function(x, n) {
         x^3
 }
 ```
-What is the result of running
+### What is the result of running
 ```[javascript]
 cube(3)
 ```
