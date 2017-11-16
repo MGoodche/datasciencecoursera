@@ -16,7 +16,13 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FPUMSDataDict06.pdf
 https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx
 
 ### Read rows 18-23 and columns 7-15 into R and assign the result to a variable called:
-
+```[javascript]
+dat
+```
+### What is the value of:
+```[javascript]
+sum(dat$Zip*dat$Ext,na.rm=T)
+```
 
 ### 4) Read the XML data on Baltimore restaurants from here:
 
