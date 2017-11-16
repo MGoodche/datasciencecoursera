@@ -29,5 +29,11 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml
 https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv
 
 ### using the fread() command load the data into an R object
+```[javascript]
+DT
+```
 ### The following are ways to calculate the average value of the variable
+```[javascript]
+pwgtp15
+```
 ### broken down by sex. Using the data.table package, which will deliver the fastest user time?
