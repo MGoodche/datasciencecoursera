@@ -9,6 +9,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FPUMSDataDict06.pdf
 ### How many properties are worth $1,000,000 or more?
 Answer:
 First, open the pdf:
+
 VAL 2
  Property value
  bb .N/A (GQ/rental unit/vacant, not for sale only)
@@ -36,13 +37,15 @@ VAL 2
  22 .$500000 - $749999
  23 .$750000 - $999999
  ##24 .$1000000+
+ 
 Then: 
+```[javascript]
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv"
 download.file(url,destfile="quiz1question1.csv",mode="w")
 data <- read.csv("quiz1question1.csv")
 nrow(data[which(data$VAL == 24),])
 [1] 53
-
+```
 ### 2) Use the data you loaded from Question 1. Consider the variable FES in the code book. Which of the "tidy data" principles does this variable violate?
 Answer:
 
