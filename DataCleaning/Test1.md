@@ -34,7 +34,16 @@ Tidy data has one variable per column.
 
 https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx
 
+### Read rows 18-23 and columns 7-15 into R and assign the result to a variable called:
+```[javascript]
+dat
+```
+### What is the value of:
+```[javascript]
+sum(dat$Zip*dat$Ext,na.rm=T)
+```
 Answer:
+
 
 [1] Install and load xlsx package:
 ```[javascript]
@@ -50,22 +59,13 @@ url2 <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xl
 download.file(url2,destfile="quiz1question2.xlsx",mode="wb")
 row <- 18:23
 col <- 7:15
-solution <- read.xlsx("quiz1question2.xlsx", sheetIndex = 1, colIndex = col, rowIndex = row, header = TRUE)
+dat <- read.xlsx("quiz1question2.xlsx", sheetIndex = 1, colIndex = col, rowIndex = row, header = TRUE)
 ```
 [3] The result is:
 ```[javascript]
-sum(solution$Zip*solution$Ext,na.rm=T)
+sum(dat$Zip*dat$Ext,na.rm=T)
 [1] 36534720
 ```
-### Read rows 18-23 and columns 7-15 into R and assign the result to a variable called:
-```[javascript]
-dat
-```
-### What is the value of:
-```[javascript]
-sum(dat$Zip*dat$Ext,na.rm=T)
-```
-Answer:
 
 ### 4) Read the XML data on Baltimore restaurants from here:
 
