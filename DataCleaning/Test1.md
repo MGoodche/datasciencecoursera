@@ -35,6 +35,7 @@ Tidy data has one variable per column.
 https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx
 
 Answer:
+
 [1] Install and load xlsx package:
 ```[javascript]
 install.packages("xlsx")
