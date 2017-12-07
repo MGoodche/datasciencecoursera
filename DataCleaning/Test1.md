@@ -96,3 +96,19 @@ pwgtp15
 ```
 ### broken down by sex. Using the data.table package, which will deliver the fastest user time?
 Answer:
+
+[1] Install and load data.table package:
+```[javascript]
+install.packages("data.table")
+library(data.table) 
+```
+
+[2]
+
+url4 <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv"
+download.file(url4,destfile="quiz1question5.csv")
+DT <- fread(input="quiz1question5.csv", sep=",")
+system.time(mean(DT$pwgtp15,by=DT$SEX))
+   user  system elapsed 
+      0       0       0 
+
