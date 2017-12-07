@@ -33,8 +33,29 @@ Tidy data has one variable per column.
 ### 3) Download the Excel spreadsheet on Natural Gas Aquisition Program here:
 
 https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx
-Answer:
 
+Answer:
+[1] Install and load xlsx package:
+```[javascript]
+install.packages("xlsx")
+install.packages("readxl")
+install.packages("rJava")
+library("xlsx")
+
+```
+[2] Download the data and select the colums 
+```[javascript]
+url2 <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx"
+download.file(url2,destfile="quiz1question2.xlsx",mode="wb")
+row <- 18:23
+col <- 7:15
+solution <- read.xlsx("quiz1question2.xlsx", sheetIndex = 1, colIndex = col, rowIndex = row, header = TRUE)
+```
+[3] The result is:
+```[javascript]
+sum(solution$Zip*solution$Ext,na.rm=T)
+[1] 36534720
+```
 ### Read rows 18-23 and columns 7-15 into R and assign the result to a variable called:
 ```[javascript]
 dat
