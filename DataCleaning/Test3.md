@@ -58,7 +58,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fjeff.jpg
 install.packages("jpeg")
 library(jpeg)
 urlimg <- "https://d396qusza40orc.cloudfront.net/getdata%2Fjeff.jpg"
-download.file(urlimg, destfile="imgfile.jpeg")
+download.file(urlimg, destfile="imgfile.jpeg", mode = "wb")
 
 ## Read file
 img <- readJPEG("imgfile.jpeg", native = TRUE)
@@ -66,6 +66,6 @@ img <- readJPEG("imgfile.jpeg", native = TRUE)
 ## Get quantiles at 30% and 80%
 quantile(img, probs = c(0.3, 0.8)) 
 
-30%       80% 
--16776939 -10092545 
+ 30%       80% 
+-15259150 -10575416 
 ```
