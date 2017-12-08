@@ -62,6 +62,7 @@ download.file(urlimg, destfile="imgfile.jpeg")
 
 ## Read file
 img <- readJPEG("imgfile.jpeg", native = TRUE)
+
 ## Get quantiles at 30% and 80%
 quantile(img, probs = c(0.3, 0.8)) 
 
