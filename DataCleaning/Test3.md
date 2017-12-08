@@ -35,7 +35,6 @@ Sales of Agriculture Products
  5 .$ 5000 - $ 9999
  6 .$10000+
  ```
- 24 .$1000000+
  
 Then: 
 ```[javascript]
@@ -47,4 +46,23 @@ which(agricultureLogical)[1:3]
 [1] 125 238 262
 ```
 
+### 2) Using the jpeg package read in the following picture of your instructor into R
 
+https://d396qusza40orc.cloudfront.net/getdata%2Fjeff.jpg
+
+### Use the parameter native=TRUE. What are the 30th and 80th quantiles of the resulting data? (some Linux systems may produce an answer 638 different for the 30th quantile)
+
+```[javascript]
+install.packages("jpeg")
+library(jpeg)
+urlimg <- "https://d396qusza40orc.cloudfront.net/getdata%2Fjeff.jpg"
+download.file(urlimg, destfile="imgfile.jpeg")
+
+## Read file
+img <- readJPEG("imgfile.jpeg", native = TRUE)
+## Get quantiles at 30% and 80%
+quantile(img, probs = c(0.3, 0.8)) 
+
+30%       80% 
+-16776939 -10092545 
+```
