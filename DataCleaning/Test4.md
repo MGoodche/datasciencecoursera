@@ -9,6 +9,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FPUMSDataDict06.pdf
 ### Apply strsplit() to split all the names of the data frame on the characters "wgtp". What is the value of the 123 element of the resulting list?
 
 Answer:
+
 [1] Download the data
 ```[javascript]
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv"
@@ -33,6 +34,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv
 http://data.worldbank.org/data-catalog/GDP-ranking-table
 
 Answer:
+
 [1] Download the data
 ```[javascript]
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv"
@@ -47,11 +49,38 @@ cleanData <- (as.numeric(cleanData))
 mean(cleanData, na.rm = TRUE)
 [1] 377652.4
 ```
+
 ### 3- In the data set from Question 2 what is a regular expression that would allow you to count the number of countries whose name begins with "United"? Assume that the variable with the country names in it is named countryNames. How many countries begin with United?
 
+Answer:
+```[javascript]
 countryNames <- gdp$X.3
 grep("^United",countryNames)
 [1]  1  6 32
+```
 
-### 4- 
+### 4- Load the Gross Domestic Product data for the 190 ranked countries in this data set:
 
+https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv
+
+### Load the educational data from this data set:
+
+https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv
+
+### Match the data based on the country shortcode. Of the countries for which the end of the fiscal year is available, how many end in June?
+
+### Original data sources:
+
+http://data.worldbank.org/data-catalog/GDP-ranking-table
+
+http://data.worldbank.org/data-catalog/ed-stats
+
+Answer:
+
+### 5- You can use the quantmod (http://www.quantmod.com/) package to get historical stock prices for publicly traded companies on the NASDAQ and NYSE. Use the following code to download data on Amazon's stock price and get the times the data was sampled.
+```[javascript]
+library(quantmod)
+amzn = getSymbols("AMZN",auto.assign=FALSE)
+sampleTimes = index(amzn)
+```
+### How many values were collected in 2012? How many values were collected on Mondays in 2012?
