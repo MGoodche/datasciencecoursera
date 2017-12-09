@@ -69,3 +69,68 @@ quantile(img, probs = c(0.3, 0.8))
  30%       80% 
 -15259150 -10575416 
 ```
+### 3) Load the Gross Domestic Product data for the 190 ranked countries in this data set:
+
+https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv
+
+### Load the educational data from this data set:
+
+https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv
+
+### Match the data based on the country shortcode. How many of the IDs match? Sort the data frame in descending order by GDP rank (so United States is last). What is the 13th country in the resulting data frame?
+
+### Original data sources:
+
+http://data.worldbank.org/data-catalog/GDP-ranking-table
+
+http://data.worldbank.org/data-catalog/ed-stats
+
+[1]Download the two datasets using download.file command:
+```[javascript]
+url1 <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv"
+download.file(url,destfile="quiz3question3_1.csv",mode="w")
+url2 <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv"
+download.file(url2,destfile="quiz3question3_2.csv",mode="w")
+```
+[2] Load and visualize the data:
+```[javascript]
+data1 <- read.csv("quiz3question3_1.csv", header = T, skip = 3, sep = ",")
+data2 <- read.csv("quiz3question3_2.csv", header = T)
+head(data1)
+> head(data1)
+    X Ranking X.1       Economy  US.dollars. X.2 X.3 X.4 X.5 X.6
+1              NA                                 NA  NA  NA  NA
+2 USA       1  NA United States  16,244,600       NA  NA  NA  NA
+3 CHN       2  NA         China   8,227,103       NA  NA  NA  NA
+4 JPN       3  NA         Japan   5,959,718       NA  NA  NA  NA
+5 DEU       4  NA       Germany   3,428,131       NA  NA  NA  NA
+6 FRA       5  NA        France   2,612,878       NA  NA  NA  NA
+
+>head(data2)
+  CountryCode                    Long.Name         Income.Group                     Region Lending.category Other.groups  Currency.Unit
+1         ABW                        Aruba High income: nonOECD  Latin America & Caribbean                                Aruban florin
+2         ADO      Principality of Andorra High income: nonOECD      Europe & Central Asia                                         Euro
+3         AFG Islamic State of Afghanistan           Low income                 South Asia              IDA         HIPC Afghan afghani
+4         AGO  People's Republic of Angola  Lower middle income         Sub-Saharan Africa              IDA              Angolan kwanza
+5         ALB          Republic of Albania  Upper middle income      Europe & Central Asia             IBRD                Albanian lek
+```
+[3] Install and load packages: data.table
+```[javascript]
+library(data.table)
+```
+[4] Read the data using data.table library. I am going to assign the same ID: CountryCode to both datasets
+```[javascript]
+gdp <- fread("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv", skip = 4, nrows = 190, select = c(1, 2, 4, 5), col.names = c("CountryCode", "Rank", "Economy", "Total"))
+edu <- fread("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv")
+View(gdp)
+View(edu)
+merge <- merge(gdp, edu, by = 'CountryCode')
+```
+[5] To sort the data frame in descending order by GDP rank, use desc() to sort a variable in descending order.
+```[javascript]
+library(dplyr)
+> nrow(merge)
+[1] 189
+> arrange(merge, desc(Rank))[13,"Economy"]
+[1] "St. Kitts and Nevis"
+```
