@@ -45,6 +45,7 @@ agricultureLogical <- dt$ACR == 3 & dt$AGS == 6
 which(agricultureLogical)[1:3]
 [1] 125 238 262
 ```
+The answer is 125 238 262
 
 ### 2) Using the jpeg package read in the following picture of your instructor into R
 
@@ -69,6 +70,8 @@ quantile(img, probs = c(0.3, 0.8))
  30%       80% 
 -15259150 -10575416 
 ```
+The answer is -15259150 -10575416
+
 ### 3) Load the Gross Domestic Product data for the 190 ranked countries in this data set:
 
 https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv
@@ -134,6 +137,7 @@ library(dplyr)
 > arrange(merge, desc(Rank))[13,"Economy"]
 [1] "St. Kitts and Nevis"
 ```
+The answer is 189 matches, 13th country is St. Kitts and Nevis
 
 ### 4) What is the average GDP ranking for the "High income: OECD" and "High income: nonOECD" group?
 ```[javascript]
@@ -141,6 +145,7 @@ library(dplyr)
 High income: nonOECD    High income: OECD           Low income  Lower middle income  Upper middle income 
             91.91304             32.96667            133.72973            107.70370             92.13333 
 ```
+The answer is 32.96667, 91.91304
 
 ### 5) Cut the GDP ranking into 5 separate quantile groups. Make a table versus Income.Group. How many countries are Lower middle income but among the 38 nations with highest GDP?
 ```[javascript]
