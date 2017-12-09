@@ -35,3 +35,11 @@ i am so angry
 
 I am so over this. I need food. Mmmm bacon...
 ```
+```[javascript]
+^[0-9][a-zA-Z]
+```
+will match
+```[javascript]
+7th inning stretch
+2nD half soon to begin. OSU did just win something
+```
