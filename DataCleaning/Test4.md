@@ -84,3 +84,32 @@ amzn = getSymbols("AMZN",auto.assign=FALSE)
 sampleTimes = index(amzn)
 ```
 ### How many values were collected in 2012? How many values were collected on Mondays in 2012?
+
+Answer:
+
+[1] Download the package and load it
+```[javascript]
+install.packages("quantmod")
+library(quantmod)
+amzn = getSymbols("AMZN",auto.assign=FALSE)
+sampleTimes = index(amzn)
+```
+[2] First, the year
+```[javascript]
+year2012 <- grepl('2012-*', sampleTimes)
+table(year2012)
+year2012
+FALSE  TRUE 
+ 2505   250 
+```
+[3] The the day
+```[javascript]
+sampleTimes2012 <- subset(sampleTimes, year2012)
+day <- format(sampleTimes2012, '%a')
+table(day)
+day
+ju. lu. ma. mi. vi. 
+ 51  47  50  51  51 
+```
+
+Answer: 250 and 47
