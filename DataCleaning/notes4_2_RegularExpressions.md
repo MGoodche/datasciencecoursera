@@ -79,4 +79,21 @@ yeah ive had the fire on tonight
 In this example, there are two alternatives. So we'll match all of these lines because there's either fire or flood in every single
 line that we see here
 
+#### And ()
+Subexpressions are often contained in parentheses to constrain the alternatives
+
+```[javascript]
+^([Gg]ood|[Bb]ad)
+```
+will match
+```[javascript]
+bad habbit
+bad coordination today
+good, becuase there is nothing worse than a man in kinky underwear
+Badcop, its because people want to use drugs
+Good Monday Holiday
+Good riddance to Limey
+```
+In this example, we're looking at the beginning of the line and you have to have either good or bad lowercase or uppercase at the beginning of the line. 
+
 Reference: https://github.com/rdpeng/courses/blob/master/03_GettingData/04_03_regularExpressionsII/index.md
