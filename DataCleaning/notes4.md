@@ -16,8 +16,13 @@ Example1: Search Alameda word in cameraData$intersection dataset
 > grep("Alameda",cameraData$intersection)
 [1]  4  5 36
 ```
-So it appears in the 4th, 5th and 36th element of the intersection variable
+So it appears in the 4th, 5th and 36th element of the intersection variable.
 
+If for example, the word doesn't exist, it will return integer (0) when that value does not appear in the dataset:
+```[javascript]
+> grep("JeffStreet",cameraData$intersection)
+integer(0)
+```
 Example2:
 ```[javascript]
 > table(grepl("Alameda",cameraData$intersection))
