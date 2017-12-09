@@ -70,3 +70,9 @@ The paste0 command allow you to paste two strings together without any space in 
 > paste0 ("Miriam","Pavon")
 [1] "MiriamPavon"
 ```
+#### 4 - str_trim
+Trim whitespace from start and end of string.
+```[javascript]
+> str_trim("Miriam      ")
+```
+[1] "Miriam"
