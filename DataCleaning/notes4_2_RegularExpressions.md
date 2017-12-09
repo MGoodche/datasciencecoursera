@@ -96,4 +96,8 @@ Good riddance to Limey
 ```
 In this example, we're looking at the beginning of the line and you have to have either good or bad lowercase or uppercase at the beginning of the line. 
 
+#### Question mark ?
+Indicates that the indicated expression is optional
+
+
 Reference: https://github.com/rdpeng/courses/blob/master/03_GettingData/04_03_regularExpressionsII/index.md
