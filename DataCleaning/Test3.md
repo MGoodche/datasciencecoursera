@@ -134,3 +134,23 @@ library(dplyr)
 > arrange(merge, desc(Rank))[13,"Economy"]
 [1] "St. Kitts and Nevis"
 ```
+
+### 4) What is the average GDP ranking for the "High income: OECD" and "High income: nonOECD" group?
+```[javascript]
+> tapply(merge$Rank, merge$`Income Group`, mean)
+High income: nonOECD    High income: OECD           Low income  Lower middle income  Upper middle income 
+            91.91304             32.96667            133.72973            107.70370             92.13333 
+```
+
+### 5) Cut the GDP ranking into 5 separate quantile groups. Make a table versus Income.Group. How many countries are Lower middle income but among the 38 nations with highest GDP?
+```[javascript]
+library(Hmisc)
+separategroups <- cut2(merge$Rank, g=5)
+table(separategroups, merge$"Income Group")  
+separategroups High income: nonOECD High income: OECD Low income Lower middle income Upper middle income
+     [  1, 39)                    4                18          0                   5                  11
+     [ 39, 77)                    5                10          1                  13                   9
+     [ 77,115)                    8                 1          9                  12                   8
+     [115,154)                    5                 1         16                   8                   8
+     [154,190]                    1                 0         11                  16                   9
+```
