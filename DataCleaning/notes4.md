@@ -28,6 +28,7 @@ FALSE  TRUE
 The grepl command will look for it in this intersection variable. And it will return a vector that's true whenever Alameda appears and false whenever Alameda doesn't appear. And so in this case you can see that in that three of the times the Alameda appears, and so if I make a table of the true and false values, it's true three of the times. 
 
 Example3:
+
 We can also use value=TRUE as one of the parameters sent to grep and what will do is instead of telling you which of the elements it that Alameda appears in, it will actually return the values where Alameda appears. So you can see these are the three intersections where the Alameda appears in the camera data. 
 ```[javascript]
 > grep("Alameda",cameraData$intersection,value=TRUE)
