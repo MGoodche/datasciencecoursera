@@ -99,5 +99,25 @@ In this example, we're looking at the beginning of the line and you have to have
 #### Question mark ?
 Indicates that the indicated expression is optional
 
+#### Star * and plus + sign
+So star means repeat any number of
+times including none of the item, and plus means at least one of the item. 
+```[javascript]
+(.*)
+```
+In this example I am searching for something between parentheses. And it can be any character repeated any number of times. So that will match everything from something where you have a phrase in between the parentheses to something where you just have parentheses with absolutely nothing in between. 
+
+Example
+```[javascript]
+[0-9]+ (.*)[0-9]+
+```
+So for example, here we're looking for at least one number followed by any number of characters followed by at least one number again. So here we see one number followed by some large number of characters followed by another number again.
+```[javascript]
+working as MP here 720 MP battallion, 42nd birgade
+so say 2 or 3 years at colleage and 4 at uni makes us 23 when and if we fin
+it went down on several occasions for like, 3 or 4 *days*
+Mmmm its time 4 me 2 go 2 bed
+```
+
 
 Reference: https://github.com/rdpeng/courses/blob/master/03_GettingData/04_03_regularExpressionsII/index.md
