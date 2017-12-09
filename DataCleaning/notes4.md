@@ -39,3 +39,28 @@ We can also use value=TRUE as one of the parameters sent to grep and what will d
 > grep("Alameda",cameraData$intersection,value=TRUE)
 [1] "The Alameda  & 33rd St"   "E 33rd  & The Alameda"    "Harford \n & The Alameda"
 ```
+
+### String functions
+#### 1- NCHAR
+The NCHAR command will tell you the number of characters that appear in a particular string. 
+```[javascript]
+library(stringr)
+> nchar("Miriam Pavon")
+[1] 12
+```
+In this case, there are twelve characters 
+
+#### 2 - substr
+The substr command will help you to take out part of the string
+```[javascript]
+> substr("Miriam Pavon",1,6)
+[1] "Miriam"
+> substr("Miriam Pavon",8,12)
+[1] "Pavon"
+```
+#### 3 - paste
+The paste command will allow you to paste two strings together
+```[javascript]
+> paste ("Miriam","Pavon is the best")
+[1] "Miriam Pavon is the best"
+```
