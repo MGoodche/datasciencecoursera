@@ -25,3 +25,13 @@ Mir is cool
 ans MIR is great
 but mIr not
 ```
+You can also combine these techniques together:
+```[javascript]
+^[Ii] am
+```
+will match
+```[javascript]
+i am so angry 
+
+I am so over this. I need food. Mmmm bacon...
+```
