@@ -58,9 +58,15 @@ The substr command will help you to take out part of the string
 > substr("Miriam Pavon",8,12)
 [1] "Pavon"
 ```
-#### 3 - paste
+#### 3 - paste and paste0
 The paste command will allow you to paste two strings together
 ```[javascript]
 > paste ("Miriam","Pavon is the best")
 [1] "Miriam Pavon is the best"
+```
+
+The paste0 command allow you to paste two strings together without any space in between
+```[javascript]
+> paste0 ("Miriam","Pavon")
+[1] "MiriamPavon"
 ```
