@@ -43,3 +43,8 @@ will match
 7th inning stretch
 2nD half soon to begin. OSU did just win something
 ```
+When used at the beginning of a character class, the “^” is also a metacharacter and indicates matching characters NOT in the indicated class
+```[javascript]
+[^?.]$
+```
+Used in the beginning of a character class the ^ is also a metacharacter and indicates that it should match any of the characters not in the indicated class. So for example here we're looking at the end of the line with the $. And we're looking for any line that ends in anything other than a period or a question mark. Cuz this means either a period or a question mark, and this caret means that it's not either of those two characters, so it'll match all of these lines, because most of them don't have any punctuation, and some have exclamation points at the end.
