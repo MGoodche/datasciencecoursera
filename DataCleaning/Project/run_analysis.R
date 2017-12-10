@@ -47,9 +47,9 @@ total <- rbind(dtrain, dtest) ## Merge the train and test data into data.allwith
 
 ## Step 2: Extract only the measurements on the mean and standard deviation for each measurement. 
 ## Step 2.1: Read the features.txt file. This tells which variables in dt are measurements for the mean and standard deviation.
-featureNames <- read.table("features.txt")
+featurefiles <- read.table("features.txt", stringsAsFactors = FALSE)[,2]
 ## 
-## head(featureNames)
+## head(featurefiles)
 ##   V1                V2
 ## 1  1 tBodyAcc-mean()-X
 ## 2  2 tBodyAcc-mean()-Y
@@ -59,9 +59,11 @@ featureNames <- read.table("features.txt")
 ## 6  6  tBodyAcc-std()-Z
 
 ## Step 2.2:  Extract mean and standard deviation of each measurements
-featureIndex <- grep(("mean\\(\\)|std\\(\\)"), featureNames)
+featureIndex <- grep(("mean\\(\\)|std\\(\\)"), featurefiles)
 finalData <- total[, c(1, 2, featureIndex+2)]
-colnames(finalData) <- c("Subject", "Activity", featureNames[featureIndex])
+colnames(finalData) <- c("Subject", "Activity", featurefiles[featureIndex])
+
+
 
 ## Step 3: Uses descriptive activity names to name the activities in the data set
 ## Step 3.1: First, load activity_labels.txt
@@ -76,4 +78,25 @@ activities <- read.table("activity_labels.txt")
 ## 5  5           STANDING
 ## 6  6             LAYING
 
-## Step 3.2: Let's remove "_" using the regular expression function gsub and change the characters to lower case for readability.
+## Step 3.2: Let's remove "_" using the regular expression function gsub and change the characters to lower case
+finalData$Activity <- factor(finalData$Activity, levels = activities[,1], labels = activities[,2])
+
+## Check
+## finalData$Activity[1:10]
+## [1] standing standing standing standing standing standing standing standing standing standing
+## Levels: walking walkingupstairs walkingdownstairs sitting standing laying
+
+## Step 4: Appropriately labels the data set with descriptive variable names.
+names(finalData) <- gsub("\\()", "", names(finalData))
+names(finalData) <- gsub("^t", "time", names(finalData))
+names(finalData) <- gsub("^f", "frequence", names(finalData))
+names(finalData) <- gsub("-mean", "Mean", names(finalData))
+names(finalData) <- gsub("-std", "Std", names(finalData))
+
+## Step 5: Appropriately labels the data set with descriptive variable names.
+library(dplyr)
+groupData <- finalData %>%
+        group_by(Subject, Activity) %>%
+        summarise_each(funs(mean))
+
+write.table(groupData, "FinalMeasures.txt", row.names = FALSE)
