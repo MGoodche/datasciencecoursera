@@ -44,3 +44,6 @@ dtest <- cbind(test.subject, test.y, test.x) ## and the row number of the two da
 total <- rbind(dtrain, dtest) ## Merge the train and test data into data.allwith the rbind command.
 ## dim(total)
 ## [1] 10299   563
+
+## Step 2: Extract only the measurements on the mean and standard deviation for each measurement. 
+## Step 2.1: Read the features.txt file. This tells which variables in dt are measurements for the mean and standard deviation.
