@@ -98,5 +98,5 @@ library(dplyr)
 groupData <- finalData %>%
         group_by(Subject, Activity) %>%
         summarise_each(funs(mean))
+write.csv(groupData, "tidy.csv", row.names=FALSE)
 
-write.table(groupData, "FinalMeasures.txt", row.names = FALSE)
