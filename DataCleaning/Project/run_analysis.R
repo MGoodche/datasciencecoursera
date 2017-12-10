@@ -79,8 +79,8 @@ activities <- read.table("activity_labels.txt")
 ## 6  6             LAYING
 
 ## Step 3.2: Let's remove "_" using the regular expression function gsub and change the characters to lower case
+activities[, 2] = gsub("_", "", tolower(as.character(activities[, 2])))
 finalData$Activity <- factor(finalData$Activity, levels = activities[,1], labels = activities[,2])
-
 ## Check
 ## finalData$Activity[1:10]
 ## [1] standing standing standing standing standing standing standing standing standing standing
@@ -98,5 +98,5 @@ library(dplyr)
 groupData <- finalData %>%
         group_by(Subject, Activity) %>%
         summarise_each(funs(mean))
-write.csv(groupData, "tidy.csv", row.names=FALSE)
+write.csv(groupData, "tidy2.csv", row.names=FALSE)
 
