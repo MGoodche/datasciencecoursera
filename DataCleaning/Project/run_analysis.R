@@ -47,3 +47,33 @@ total <- rbind(dtrain, dtest) ## Merge the train and test data into data.allwith
 
 ## Step 2: Extract only the measurements on the mean and standard deviation for each measurement. 
 ## Step 2.1: Read the features.txt file. This tells which variables in dt are measurements for the mean and standard deviation.
+featureNames <- read.table("features.txt")
+## 
+## head(featureNames)
+##   V1                V2
+## 1  1 tBodyAcc-mean()-X
+## 2  2 tBodyAcc-mean()-Y
+## 3  3 tBodyAcc-mean()-Z
+## 4  4  tBodyAcc-std()-X
+## 5  5  tBodyAcc-std()-Y
+## 6  6  tBodyAcc-std()-Z
+
+## Step 2.2:  Extract mean and standard deviation of each measurements
+featureIndex <- grep(("mean\\(\\)|std\\(\\)"), featureNames)
+finalData <- total[, c(1, 2, featureIndex+2)]
+colnames(finalData) <- c("Subject", "Activity", featureNames[featureIndex])
+
+## Step 3: Uses descriptive activity names to name the activities in the data set
+## Step 3.1: First, load activity_labels.txt
+activities <- read.table("activity_labels.txt")
+## These are the activities:
+## > activities
+##   V1                 V2
+## 1  1            WALKING
+## 2  2   WALKING_UPSTAIRS
+## 3  3 WALKING_DOWNSTAIRS
+## 4  4            SITTING
+## 5  5           STANDING
+## 6  6             LAYING
+
+## Step 3.2: Let's remove "_" using the regular expression function gsub and change the characters to lower case for readability.
