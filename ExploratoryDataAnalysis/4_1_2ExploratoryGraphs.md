@@ -16,7 +16,8 @@ barplot(table(data$variable), col = "wheat", main = "Number of Variables")
 
 ### 4- Multiple Boxplots
 ```[R]
-barplot(table(data$variable), col = "wheat", main = "Number of Variables")
+pollution <- read.csv("data/avgpm25.csv")
+boxplot(val1 ~ val2, data = pollution, col = "red")
 ```
 
 ### 5- Multiple Histograms
