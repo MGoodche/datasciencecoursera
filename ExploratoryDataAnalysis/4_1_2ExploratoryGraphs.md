@@ -22,15 +22,25 @@ boxplot(val1 ~ val2, data = dataset, col = "red")
 
 ### 5- Multiple Histograms
 ```[R]
-barplot(table(data$variable), col = "wheat", main = "Number of Variables")
+dataset <- read.csv("data.csv")
+par(mfrow = c(2, 1), mar = c(4, 4, 2, 1))
+hist(subset(dataset, region == "east")$pm25, col = "green")
+hist(subset(dataset, region == "west")$pm25, col = "green")
 ```
 
 ### 6- Scatterplot
 ```[R]
-barplot(table(data$variable), col = "wheat", main = "Number of Variables")
+
+dataset <- read.csv("data.csv")
+with(dataset, plot(latitude, pm25))
+abline(h = 12, lwd = 2, lty = 2)
 ```
 
 ### 7- Multiple Scatterplots
 ```[R]
-barplot(table(data$variable), col = "wheat", main = "Number of Variables")
+
+dataset <- read.csv("data.csv")
+par(mfrow = c(1, 2), mar = c(5, 4, 2, 1))
+with(subset(dataset, region == "west"), plot(latitude, pm25, main = "West"))
+with(subset(dataset, region == "east"), plot(latitude, pm25, main = "East"))
 ```
