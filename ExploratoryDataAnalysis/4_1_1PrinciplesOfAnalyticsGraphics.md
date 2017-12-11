@@ -14,4 +14,18 @@
   - The real world is multivariate
   - Need to "escape flatland"
   
+  4- Integration of evidence
+
+  - Completely integrate words, numbers, images, diagrams
+  - Data graphics should make use of many modes of data presentation
+  - Don't let the tool drive the analysis
+  
+  5- Describe and document the evidence with appropriate labels, scales, sources, etc.
+
+  - A data graphic should tell a complete story that is credible
+  
+  5- Content is king
+
+  - Analytical presentations ultimately stand or fall depending on the quality, relevance, and integrity of their content
+  
 Reference: https://github.com/jtleek/modules/blob/master/04_ExploratoryAnalysis/Principles/index.md
