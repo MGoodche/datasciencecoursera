@@ -13,3 +13,23 @@ hist(data$variable, col = "green")
 ```[R]
 barplot(table(data$variable), col = "wheat", main = "Number of Variables")
 ```
+
+### 4- Multiple Boxplots
+```[R]
+barplot(table(data$variable), col = "wheat", main = "Number of Variables")
+```
+
+### 5- Multiple Histograms
+```[R]
+barplot(table(data$variable), col = "wheat", main = "Number of Variables")
+```
+
+### 6- Scatterplot
+```[R]
+barplot(table(data$variable), col = "wheat", main = "Number of Variables")
+```
+
+### 7- Multiple Scatterplots
+```[R]
+barplot(table(data$variable), col = "wheat", main = "Number of Variables")
+```
