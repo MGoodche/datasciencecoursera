@@ -30,7 +30,6 @@ hist(subset(dataset, region == "west")$pm25, col = "green")
 
 ### 6- Scatterplot
 ```[R]
-
 dataset <- read.csv("data.csv")
 with(dataset, plot(latitude, pm25))
 abline(h = 12, lwd = 2, lty = 2)
@@ -38,7 +37,6 @@ abline(h = 12, lwd = 2, lty = 2)
 
 ### 7- Multiple Scatterplots
 ```[R]
-
 dataset <- read.csv("data.csv")
 par(mfrow = c(1, 2), mar = c(5, 4, 2, 1))
 with(subset(dataset, region == "west"), plot(latitude, pm25, main = "West"))
