@@ -15,3 +15,6 @@ Thanks to this system you can create multiple plots on a page, combine variables
 
 ### 3- The ggplot2 System
 The ggplot2 System is useful for conditioning plots. Mixes elements of Base and Lattice
+
+### Important
+You can't mix functions between systems.
