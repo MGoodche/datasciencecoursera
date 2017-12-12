@@ -14,3 +14,4 @@ For this system, it's neccesary to download the lattice package. Here, every plo
 Thanks to this system you can create multiple plots on a page, combine variables to look multiple factors.
 
 ### 3- The ggplot2 System
+The ggplot2 System is useful for conditioning plots. Mixes elements of Base and Lattice
