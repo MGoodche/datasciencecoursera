@@ -29,6 +29,8 @@ barplot(table(data$variable), col = "wheat", main = "Number of Variables")
 ```
 
 ### 4- Multiple Boxplots
+-  We use the R formula y ~ x to show that y depends on x, when the data come from the same data frame.  By doing this, we don't have to type data$variable1 and data$variable2. We can just specify the formula variable1~variable2
+
 ```[R]
 dataset <- read.csv("data.csv")
 boxplot(val1 ~ val2, data = dataset, col = "red")
