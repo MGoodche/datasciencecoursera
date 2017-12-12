@@ -18,6 +18,11 @@ abline(v = 12, lwd=size)
 ```[R]
 abline(v = median(ppm), col = "magenta", lwd = 4)
 ```
+- To create a frequency table
+```[R]
+reg <- table (data$variable)
+```
+
 ### 3- Barplot
 ```[R]
 barplot(table(data$variable), col = "wheat", main = "Number of Variables")
