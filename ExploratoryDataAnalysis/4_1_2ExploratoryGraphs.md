@@ -8,7 +8,16 @@ boxplot(data$variable, col = "blue")
 ```[R]
 hist(data$variable, col = "green")
 ```
+- If you want to add vertical lines to a plot
 
+```[R]
+abline(v = 12, lwd=size)
+```
+- If you want to add a determinate measire, use v
+
+```[R]
+abline(v = median(ppm), col = "magenta", lwd = 4)
+```
 ### 3- Barplot
 ```[R]
 barplot(table(data$variable), col = "wheat", main = "Number of Variables")
