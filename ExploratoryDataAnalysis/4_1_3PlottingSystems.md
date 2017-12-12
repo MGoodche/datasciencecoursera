@@ -6,3 +6,7 @@ The base plotting system is the oldest system in R. In this model, there is alwa
 > data(cars)
 > with(cars, plot(speed, dist))
 ```
+In this simple plot, you can add lines, labels, colours, etc
+
+### 2- The Lattice system
+For this system, it's neccesary to download the lattice package. Here, every plot is constructed with a single function called 'call'
