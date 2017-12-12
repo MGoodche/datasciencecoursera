@@ -4,7 +4,5 @@ The base plotting system is the oldest system in R. In this model, there is alwa
 - Example of base plot
 ```[R]
 > data(cars)
-> with(cars, plots(speed, dist))
-Error in plots(speed, dist) : no se pudo encontrar la función "plots"
 > with(cars, plot(speed, dist))
 ```
