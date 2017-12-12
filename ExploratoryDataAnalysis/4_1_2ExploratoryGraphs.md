@@ -60,7 +60,11 @@ dataset <- read.csv("data.csv")
 with(dataset, plot(latitude, pm25))
 abline(h = 12, lwd = 2, lty = 2)
 ```
-
+- If you want to plot two types of variables 
+```[R]
+plot(pollution$latitude, ppm, col = pollution$region)
+```
+Thanks to this, we've got two colors on the map to distinguish between counties in the east and those in the west.
 ### 7- Multiple Scatterplots
 ```[R]
 dataset <- read.csv("data.csv")
