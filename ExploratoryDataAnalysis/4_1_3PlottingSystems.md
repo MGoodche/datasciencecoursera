@@ -9,4 +9,8 @@ The base plotting system is the oldest system in R. In this model, there is alwa
 In this simple plot, you can add lines, labels, colours, etc
 
 ### 2- The Lattice system
-For this system, it's neccesary to download the lattice package. Here, every plot is constructed with a single function called 'call'
+For this system, it's neccesary to download the lattice package. Here, every plot is constructed with a single function called 'call'. Plots are created with a single this single function.
+
+Thanks to this system you can create multiple plots on a page, combine variables to look multiple factors.
+
+### 3- The ggplot2 System
