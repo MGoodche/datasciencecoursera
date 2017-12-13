@@ -23,3 +23,15 @@ Some important base graphics parameters
 - xlab: character string for the x-axis label
 - ylab: character string for the y-axis label
 
+### 3. Base Plotting Functions
+
+- plot: make a scatterplot, or other type of plot depending on the class of the object being plotted
+- lines: add lines to a plot, given a vector x values and a corresponding vector of y values (or a 2-column matrix); this function just connects the dots
+- points: add points to a plot
+- text: add text labels to a plot using specified x, y coordinates
+- title: add annotations to x, y axis labels, title, subtitle, outer margin
+- mtext: add arbitrary text to the margins (inner or outer) of the plot
+- axis: adding axis ticks/labels
+
+
+
