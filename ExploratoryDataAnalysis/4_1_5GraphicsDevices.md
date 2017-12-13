@@ -13,3 +13,18 @@ title(main = "Old Faithful Geyser data")
 dev.off()  
 ## Now you can view the file 'myplot.pdf' on your computer
 ```
+
+Copying a plot to another device can be useful because some plots require a lot of code and it can be a pain to type all that in again for a different device. Of course, it is always good to save the code that creates your plots, especially for any plots that you might publish or give to other people.
+The dev.copy() can be used to copy a plot from one device to another. For example you might copy a plot from the screen device to a file device. The dev.copy2pdf() function is used specifically to copy a plot from the current device (usually the screen device) to a PDF file.
+
+```[R]
+library(datasets)
+## Create plot on screen device
+with(faithful, plot(eruptions, waiting))  
+## Add a main title
+title(main = "Old Faithful Geyser data")  
+## Copy my plot to a PNG file
+dev.copy(png, file = "geyserplot.png")  
+## Don't forget to close the PNG device!
+dev.off()  
+```
