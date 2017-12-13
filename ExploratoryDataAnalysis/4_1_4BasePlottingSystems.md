@@ -13,4 +13,12 @@ You are essentially creating two dimensional graphics, and you have to do it in 
 For more information:
 ```[R]
 ?par 
-````
+```
+Some important base graphics parameters
+
+- pch: the plotting symbol (default is open circle)
+- lty: the line type (default is solid line), can be dashed, dotted, etc.
+- lwd: the line width, specified as an integer multiple
+- col: the plotting color, specified as a number, string, or hex code; the colors() function gives you a vector of colors by name
+- xlab: character string for the x-axis label
+- ylab: character string for the y-axis label
