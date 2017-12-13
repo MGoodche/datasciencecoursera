@@ -33,5 +33,9 @@ Some important base graphics parameters
 - mtext: add arbitrary text to the margins (inner or outer) of the plot
 - axis: adding axis ticks/labels
 
-
-
+### 4. Base Plot with Annotation
+```[R]
+library(datasets)
+with(university, plot(W, M))
+title(main = "W and M in Spain universities")  ## Add a title
+```
