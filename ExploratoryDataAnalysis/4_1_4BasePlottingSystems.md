@@ -22,3 +22,4 @@ Some important base graphics parameters
 - col: the plotting color, specified as a number, string, or hex code; the colors() function gives you a vector of colors by name
 - xlab: character string for the x-axis label
 - ylab: character string for the y-axis label
+
