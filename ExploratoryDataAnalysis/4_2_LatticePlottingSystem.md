@@ -53,3 +53,8 @@ f <- factor(f, labels = c("Group 1", "Group 2"))
 xyplot(y ~ x | f, layout = c(2, 1))  ## Plot with 2 panels
 ```
 In this example, you can see how to separate two groups
+
+## 4. Lattice Panel Functions: Regression Line
+
+Using lmline(x,y)
+
