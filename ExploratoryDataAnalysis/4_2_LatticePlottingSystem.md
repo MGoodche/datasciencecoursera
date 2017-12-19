@@ -39,3 +39,17 @@ levelplot, contourplot: for plotting "image" dat
 ```
 ![Alt text](https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Plots/plot1.png?raw=true)
 
+## 3. Lattice Panel Functions
+
+Lattice functions have a panel function which controls what happens inside each of the planet. Each panel's going to represent a subset of the data which is defined by the conditioning variable that you give it.
+
+Example:
+```[R]
+set.seed(10)
+x <- rnorm(100)
+f <- rep(0:1, each = 50)
+y <- x + f - f * x + rnorm(100, sd = 0.5)
+f <- factor(f, labels = c("Group 1", "Group 2"))
+xyplot(y ~ x | f, layout = c(2, 1))  ## Plot with 2 panels
+```
+In this example, you can see how to separate two groups
