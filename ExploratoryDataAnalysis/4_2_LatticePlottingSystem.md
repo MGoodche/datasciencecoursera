@@ -25,3 +25,11 @@ levelplot, contourplot: for plotting "image" dat
 > library(datasets)
 > xyplot(Ozone ~ Wind, data = airquality)
 ```
+Plot Ozone versus Month:
+
+```[R]
+> library(lattice)
+> library(datasets)
+> airquality <- transform(airquality, Month = factor(Month))
+> xyplot(Ozone ~ Wind | Month, data = airquality, layout = c(5, 1))
+```
