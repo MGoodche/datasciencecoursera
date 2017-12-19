@@ -20,14 +20,17 @@ splom: scatterplot matrix; like pairs in base plotting system
 
 levelplot, contourplot: for plotting "image" dat
 
+- One dimension Panel
 ```[R]
 > library(lattice)
 > library(datasets)
 > xyplot(Ozone ~ Wind, data = airquality)
 ```
-Plot Ozone versus Month:
+
+- Multidimensional Panel
 
 ```[R]
+## Plot Ozone versus Month:
 > library(lattice)
 > library(datasets)
 > airquality <- transform(airquality, Month = factor(Month))
