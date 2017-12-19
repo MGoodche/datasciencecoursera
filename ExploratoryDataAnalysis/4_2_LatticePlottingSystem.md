@@ -19,3 +19,9 @@ dotplot: plot dots on "violin strings"
 splom: scatterplot matrix; like pairs in base plotting system
 
 levelplot, contourplot: for plotting "image" dat
+
+```[R]
+> library(lattice)
+> library(datasets)
+> xyplot(Ozone ~ Wind, data = airquality)
+```
