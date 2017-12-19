@@ -26,6 +26,7 @@ levelplot, contourplot: for plotting "image" dat
 > library(datasets)
 > xyplot(Ozone ~ Wind, data = airquality)
 ```
+![Alt text](https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Plots/plot2.png?raw=true)
 
 - Multidimensional Panel
 
