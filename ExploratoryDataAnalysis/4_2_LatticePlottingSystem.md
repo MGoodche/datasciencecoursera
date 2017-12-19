@@ -6,7 +6,7 @@ Thanks to the Lattice Plotting System you can make panels and plots to look at m
 
 ### 2. Lattice Functions
 
-xyplot: this is the main function for creating scatterplots
+xyplot: generates a graphics object
 
 bwplot: box-and-whiskers plots (“boxplots”)
 
