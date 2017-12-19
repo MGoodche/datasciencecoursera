@@ -36,3 +36,5 @@ levelplot, contourplot: for plotting "image" dat
 > airquality <- transform(airquality, Month = factor(Month))
 > xyplot(Ozone ~ Wind | Month, data = airquality, layout = c(5, 1))
 ```
+![Alt text](datasciencecoursera/ExploratoryDataAnalysis/Plots/plot1.png)
+
