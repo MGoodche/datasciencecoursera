@@ -16,3 +16,9 @@ Design can be changed:
 ```[R]
 qplot(displ, hwy, data = mpg, color =drv)
 ```
+
+Trend: 
+
+```[R]
+qplot(displ,hwy, data = mpg, geom=c("point","smooth")) 
+```
