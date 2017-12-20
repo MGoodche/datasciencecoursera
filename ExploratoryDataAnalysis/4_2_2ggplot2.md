@@ -10,15 +10,18 @@ library(ggplot2)
 str(mpg)
 qplot(displ,hwy, data = mpg)
 ```
+![Alt text](https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Plots/plot3.png)
 
 Design can be changed:
 
 ```[R]
 qplot(displ, hwy, data = mpg, color =drv)
 ```
+![Alt text](https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Plots/plot4.png)
 
 Trend: 
 
 ```[R]
 qplot(displ,hwy, data = mpg, geom=c("point","smooth")) 
 ```
+![Alt text](https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Plots/plot5.png)
