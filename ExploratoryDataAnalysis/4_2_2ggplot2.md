@@ -25,3 +25,9 @@ Trend:
 qplot(displ,hwy, data = mpg, geom=c("point","smooth")) 
 ```
 ![Alt text](https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Plots/plot5.png)
+
+Histogram:
+
+```[R]
+qplot(displ,hwy, data = mpg, fill = drv) 
+```
