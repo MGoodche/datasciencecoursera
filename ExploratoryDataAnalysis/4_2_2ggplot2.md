@@ -13,3 +13,6 @@ qplot(displ,hwy, data = mpg)
 
 Design can be changed:
 
+```[R]
+qplot(displ, hwy, data = mpg, color =drv)
+```
