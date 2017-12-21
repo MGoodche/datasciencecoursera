@@ -28,7 +28,7 @@ Answer: The object 'p' has not yet been printed with the appropriate print metho
 
 ### 5. In the lattice system, which of the following functions can be used to finely control the appearance of all lattice plots?
 
-Answer: 
+Answer: trellis.par.set()
 
 ### 6. What is ggplot2 an implementation of?
 
@@ -42,10 +42,13 @@ data(airquality)
 I am interested in examining how the relationship between ozone and wind speed varies across each month. What would be the appropriate code to visualize that using ggplot2?
 
 Answer: 
-
+```[R]
+airquality = transform(airquality, Month = factor(Month))
+qplot(Wind, Ozone, data = airquality, facets = . ~ Month)
+```
 ### 8. What is a geom in the ggplot2 system?
 
-Answer: 
+Answer: a plotting object like point, line, or other shape
 
 ### 9. When I run the following code I get an error:
 ```[R]
@@ -56,7 +59,7 @@ print(g)
 ```
 I was expecting a scatterplot of 'votes' and 'rating' to appear. What's the problem?
 
-Answer: 
+Answer: ggplot does not yet know what type of layer to add to the plot.
 
 ### 10. The following code creates a scatterplot of 'votes' and 'rating' from the movies dataset in the ggplot2 package. After loading the ggplot2 package with the library() function, I can run
 ```[R]
@@ -64,4 +67,4 @@ qplot(votes, rating, data = movies)
 ```
 How can I modify the the code above to add a smoother to the scatterplot?
 
-Answer: 
+Answer: qplot(votes, rating, data = movies) + geom_smooth()
