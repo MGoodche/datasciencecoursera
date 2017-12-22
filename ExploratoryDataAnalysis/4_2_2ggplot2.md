@@ -31,3 +31,10 @@ Histogram:
 ```[R]
 qplot(displ,hwy, data = mpg, fill = drv) 
 ```
+
+str:
+It's a diagnostic function and an alternative to summary
+
+```[R]
+str(yourdataset) 
+```
