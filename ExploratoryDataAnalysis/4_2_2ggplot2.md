@@ -48,3 +48,4 @@ str(yourdataset)
 ```[R]
 qplot(log(Temp),data=airquality,geom="density")
 ```
+![Alt text](https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Plots/plot7.png?raw=true)
