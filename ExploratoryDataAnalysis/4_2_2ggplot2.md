@@ -34,6 +34,8 @@ qplot(displ,hwy, data = mpg, fill = drv)
 
 ![Alt text](https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Plots/plot6.png?raw=true)
 
+- Histogram to create two groups (for example: yes or no)
+
 str:
 It's a diagnostic function and an alternative to summary
 
