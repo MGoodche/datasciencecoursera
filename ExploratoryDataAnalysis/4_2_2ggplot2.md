@@ -32,6 +32,8 @@ Histogram:
 qplot(displ,hwy, data = mpg, fill = drv) 
 ```
 
+![Alt text](https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Plots/plot6.png?raw=true)
+
 str:
 It's a diagnostic function and an alternative to summary
 
