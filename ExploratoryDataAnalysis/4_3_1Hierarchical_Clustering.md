@@ -26,3 +26,9 @@ y <- rnorm(12, mean = rep(c(1, 2, 1), each = 4), sd = 0.2)
 plot(x, y, col = "blue", pch = 19, cex = 2)
 text(x + 0.05, y + 0.05, labels = as.character(1:12))
 ```
+It's important to claculate the distance between all points:
+
+```[R]
+dataFrame <- data.frame(x = x, y = y)
+dist(dataFrame)
+```
