@@ -40,6 +40,11 @@ distxy <- dist(dataFrame)
 hClustering <- hclust(distxy)
 plot(hClustering)
 ```
+If you want to cut the dendrogram, use ablime function:
+
+```[R]
+abline(h=1.5,col="blue")
+```
 
 ### 3. Merge Points Together
 
