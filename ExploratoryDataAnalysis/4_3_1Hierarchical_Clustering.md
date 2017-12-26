@@ -41,3 +41,4 @@ hClustering <- hclust(distxy)
 plot(hClustering)
 ```
 
+### 3. Merge Points Together
