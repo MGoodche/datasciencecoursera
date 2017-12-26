@@ -34,3 +34,10 @@ dist(dataFrame)
 ```
 The dendrogram is a tree diagram frequently used to illustrate the arrangement of the clusters produced by hierarchical clustering. Thanks to the dendrogram we can see the points that are grouped together.
 
+```[R]
+dataFrame <- data.frame(x = x, y = y)
+distxy <- dist(dataFrame)
+hClustering <- hclust(distxy)
+plot(hClustering)
+```
+
