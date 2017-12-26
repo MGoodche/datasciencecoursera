@@ -19,7 +19,7 @@ It is a way of partitioning a group of observations into a fixed number of clust
 
 Things that you need: a distance, a fixed number of cluster and a initial guess as to where centroids are.
 
-### 2. K-Means Function
+### 3. K-Means Function
 
 The k-means function is the function used to implement the k-means algorithm (kmeans())
 
