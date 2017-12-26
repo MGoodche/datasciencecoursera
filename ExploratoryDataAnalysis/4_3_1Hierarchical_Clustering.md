@@ -42,3 +42,7 @@ plot(hClustering)
 ```
 
 ### 3. Merge Points Together
+
+When you merge a point together, it represents a new location. If you take two points, coordinate location, it's just the average of their coordinates. 
+
+If you want to measure the distance between two clustes of points, the distance is equal to the distance between the two farthest points.
