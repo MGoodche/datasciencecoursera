@@ -32,3 +32,5 @@ It's important to claculate the distance between all points:
 dataFrame <- data.frame(x = x, y = y)
 dist(dataFrame)
 ```
+The dendrogram is a tree diagram frequently used to illustrate the arrangement of the clusters produced by hierarchical clustering. Thanks to the dendrogram we can see the points that are grouped together.
+
