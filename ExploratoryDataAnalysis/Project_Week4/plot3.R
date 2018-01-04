@@ -31,7 +31,8 @@ baltimorecity <- subset(NEI, fips == "24510")
 library(ggplot2)
 ggplot(data=baltimorecity, aes(x=year, y=Emissions, fill=type)) +    
   geom_bar(stat="identity", position="stack") +
-  ggtitle("Baltimore City Emissions by Type (1999-2008)")
+  ggtitle("Baltimore City Emissions by Type (1999-2008)") +
+
 
 # 6. Save the picture
 dev.copy(png, file = "plot3.png" ,width = 500, height = 500)  
