@@ -28,7 +28,17 @@ baltimorecity <- subset(NEI, fips == "24510")
 #114329 24510 30201599  PM25-PRI    83.025 POINT 1999
 
 #5. Now, we want to calculate the total sum of the emissions of Baltimore City but broken by years, so we will use the tapply() function
-totalemissions2 <- tapply(baltimorecity$Emissions, baltimorecity$year, sum)
+totalemissions3 <- tapply(baltimorecity$Emissions, baltimorecity$type, sum)
+
+
+barplot( 
+  density = c( 0 , 10), angle = 75, width = 15,
+   border = c( "darkgrey"),
+  (totalemissions3),
+  xlab="Year",
+  ylab="PM2.5 Emissions",
+  main="Total PM2.5 Emissions in Baltimore"
+)
 
 
 
