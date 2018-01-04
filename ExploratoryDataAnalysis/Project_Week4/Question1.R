@@ -8,4 +8,11 @@ SCC <- readRDS("Source_Classification_Code.rds")
 str(NEI)
 str(SCC)
 
-# 3.
+# 3. Unique Function returns a vector, data frame or array like x but with duplicate elements/rows removed.
+# Thanks to this we check the years
+unique(NEI$year)
+## [1] 1999 2002 2005 2008
+
+# 4. Now, we want to calculate the mean of the emissions but broken by years, so we will use the tapply() function
+totalemissions <- tapply(NEI$Emissions, NEI$year, sum)
+
