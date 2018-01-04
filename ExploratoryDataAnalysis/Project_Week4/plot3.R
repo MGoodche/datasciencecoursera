@@ -30,7 +30,7 @@ baltimorecity <- subset(NEI, fips == "24510")
 #5. Now, we plot sum of the emissions of Baltimore City but broken by years and years, so we will use ggplot function directly
 library(ggplot2)
 ggplot(data=baltimorecity, aes(x=year, y=Emissions, fill=type)) +    
-  geom_bar(stat="identity", position="dodge") +
+  geom_bar(stat="identity", position="stack") +
   ggtitle("Baltimore City Emissions by Type (1999-2008)") 
 
 # qplot(year, Emissions, data = baltimorecity, fill=type, geom = "line") + ggtitle("PM2.5 Emission by Type and Year in Baltimore City") + xlab("Year") + ylab("Total PM2.5 Emissions in tons") + theme(legend.position = c(0.9, 0.85))
