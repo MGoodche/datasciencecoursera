@@ -11,10 +11,18 @@ str(SCC)
 # 3. Unique Function returns a vector, data frame or array like x but with duplicate elements/rows removed.
 # Thanks to this we check the years
 unique(NEI$year)
-## [1] 1999 2002 2005 2008
+# [1] 1999 2002 2005 2008
 
 # 4. Now, we want to calculate the total sum of the emissions but broken by years, so we will use the tapply() function
 totalemissions <- tapply(NEI$Emissions, NEI$year, sum)
 
-# 5.
+# 5. Plot the result
+barplot( horiz=TRUE,
+  col=c("#f9a65a", "#9e66ab", "#cd7058", "#d77fb3"),
+  (totalemissions),
+  xlab="PM2.5 Emissions",
+  ylab="Year",
+  main="Total PM2.5 Emissions From All US Sources"
+)
 
+# 6. Save the picture
