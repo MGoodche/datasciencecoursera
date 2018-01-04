@@ -26,3 +26,5 @@ barplot( horiz=TRUE,
 )
 
 # 6. Save the picture
+dev.copy(png, file = "plot1.png" ,width = 500, height = 500)  
+dev.off()
