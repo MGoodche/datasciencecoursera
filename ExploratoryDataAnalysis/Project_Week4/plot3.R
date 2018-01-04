@@ -27,18 +27,16 @@ baltimorecity <- subset(NEI, fips == "24510")
 #114325 24510 30183001  PM25-PRI    10.859 POINT 1999
 #114329 24510 30201599  PM25-PRI    83.025 POINT 1999
 
-#5. Now, we want to calculate the total sum of the emissions of Baltimore City but broken by years, so we will use the tapply() function
-totalemissions3 <- tapply(baltimorecity$Emissions, baltimorecity$type, sum)
+#5. Now, we plot sum of the emissions of Baltimore City but broken by years and years, so we will use ggplot function directly
+library(ggplot2)
+ggplot(data=baltimorecity, aes(x=year, y=Emissions, fill=type)) +    
+  geom_bar(stat="identity", position="stack") +
+  ggtitle("Baltimore City Emissions by Type (1999-2008)")
 
+# 6. Save the picture
+dev.copy(png, file = "plot3.png" ,width = 500, height = 500)  
+dev.off()
 
-barplot( 
-  density = c( 0 , 10), angle = 75, width = 15,
-   border = c( "darkgrey"),
-  (totalemissions3),
-  xlab="Year",
-  ylab="PM2.5 Emissions",
-  main="Total PM2.5 Emissions in Baltimore"
-)
 
 
 
