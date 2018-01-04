@@ -13,6 +13,8 @@ str(SCC)
 unique(NEI$year)
 ## [1] 1999 2002 2005 2008
 
-# 4. Now, we want to calculate the mean of the emissions but broken by years, so we will use the tapply() function
+# 4. Now, we want to calculate the total sum of the emissions but broken by years, so we will use the tapply() function
 totalemissions <- tapply(NEI$Emissions, NEI$year, sum)
+
+# 5.
 
