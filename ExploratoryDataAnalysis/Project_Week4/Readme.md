@@ -28,6 +28,12 @@ The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master
 
 #### 2. Have total emissions from PM2.5 decreased in the Baltimore City, Maryland (fips == "24510") from 1999 to 2008? 
 
-The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot2.R"><b>HERE</b></a> and the total emissions have decreased in the United States from 1999 to 2008:
+The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot2.R"><b>HERE</b></a> and the total emissions in the Baltimore City haven't decreased in the United States from 1999 to 2008. From the range 1999 to 2002 have decreased, then tey increased, and then, againm the emissions have decreased.
 
 ![plot1](plot2.png) 
+
+#### 3. Of the four types of sources indicated by the type (point, nonpoint, onroad, nonroad) variable, which of these four sources have seen decreases in emissions from 1999–2008 for Baltimore City? Which have seen increases in emissions from 1999–2008? 
+
+The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot3.R"><b>HERE</b></a> and the total emissions in the Baltimore City haven't decreased in the United States from 1999 to 2008. From the range 1999 to 2002 have decreased, then tey increased, and then, againm the emissions have decreased.
+
+![plot1](plot3.png) 
