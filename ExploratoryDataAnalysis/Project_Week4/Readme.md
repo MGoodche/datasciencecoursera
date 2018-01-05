@@ -23,7 +23,7 @@ The zip file contains two files:
 #### 1. Have total emissions from PM2.5 decreased in the United States from 1999 to 2008?
 <p align="justify">
 The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot1.R"><b>HERE</b></a> and the total emissions have decreased in the United States from 1999 to 2008: </p>
-
+  
 ![plot1](plot1.png) 
 
 #### 2. Have total emissions from PM2.5 decreased in the Baltimore City, Maryland (fips == "24510") from 1999 to 2008? 
@@ -48,7 +48,7 @@ The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master
 
 #### 5. How have emissions from motor vehicle sources changed from 1999-2008 in Baltimore City?
 
-<p align="justify"> The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot5.R"><b>HERE</b></a> and Coal combustion-related sources show a decreasing trend. </p>
+<p align="justify"> The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot5.R"><b>HERE</b></a> and emissions from motor vehicle sources show a decreasing trend, so the total emissions from motor vehicle sources have decreased. </p>
 
 ![plot5](plot5.png) 
 
