@@ -21,8 +21,8 @@ baltimore_angeles$City <- factor(baltimore_angeles$City, levels=c("06037", "2451
  ggplot(baltimore_angeles, aes(x = factor(year), y = Emissions, fill = City)) +
         geom_bar(stat = "identity", width = 0.7) +
         facet_grid(.~City) + 
-        labs(x = "Year", y = "Emissions (Tons)", title = "Comparison of Motor Vehicle Related Emissions: Baltimore City and Los Angeles (1999 - 2008)") +
-        theme(plot.title = element_text(size = 14),
+        labs(x = "Year", y = "Emissions (Tons)", title = "Comparison of Motor Vehicle Related \nEmissions: Baltimore City and Los Angeles (1999 - 2008)") +
+        theme(plot.title = element_text(size = 12),
               axis.title.x = element_text(size = 12),
               axis.title.y = element_text(size = 12),
               strip.text.x = element_text(size = 12)) +
