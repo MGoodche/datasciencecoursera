@@ -30,17 +30,30 @@ The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master
 <p align="justify">
 The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot2.R"><b>HERE</b></a> and the total emissions in the Baltimore City haven't decreased in the United States from 1999 to 2008. From the range 1999 to 2002 have decreased, then tey increased, and then, againm the emissions have decreased.
 </p>
-![plot1](plot2.png) 
+
+![plot2](plot2.png) 
 
 #### 3. Of the four types of sources indicated by the type (point, nonpoint, onroad, nonroad) variable, which of these four sources have seen decreases in emissions from 1999–2008 for Baltimore City? Which have seen increases in emissions from 1999–2008? 
 
 <p align="justify"> The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot3.R"><b>HERE</b></a> and the “NON-ROAD”, “NONPOINT” and “ON-ROAD” type of sources have shown a decrease in the total PM2.5 Emissions. “POINT” type of source, shows the increase in the total PM2.5 emissions from 1999-2005 but again a decrease in 2008. </p>
 
-![plot1](plot3.png) 
+![plot3](plot3.png) 
 
 
 #### 4. Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
 
-The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot4.R"><b>HERE</b></a> and the “NON-ROAD”, “NONPOINT” and “ON-ROAD” type of sources have shown a decrease in the total PM2.5 Emissions. “POINT” type of source, shows the increase in the total PM2.5 emissions from 1999-2005 but again a decrease in 2008
+<p align="justify"> The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot4.R"><b>HERE</b></a> and Coal combustion-related sources show a decreasing trend. </p>
 
 ![plot1](plot4.png) 
+
+#### 5. How have emissions from motor vehicle sources changed from 1999-2008 in Baltimore City?
+
+<p align="justify"> The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot5.R"><b>HERE</b></a> and Coal combustion-related sources show a decreasing trend. </p>
+
+![plot5](plot5.png) 
+
+#### 6. Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Angeles County, California (fips == "06037"). Which city has seen greater changes over time in motor vehicle emissions?
+
+<p align="justify"> The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot5.R"><b>HERE</b></a> and Coal combustion-related sources show a decreasing trend. </p>
+
+![plot6](plot6v.png) 
