@@ -52,8 +52,8 @@ The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master
 
 ![plot5](plot5.png) 
 
-#### 6. Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Angeles County, California (fips == "06037"). Which city has seen greater changes over time in motor vehicle emissions?
+#### 6. Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Angeles County, California (fips == "06037"). Which city has seen greater changes over time in motor vehicle emissions? 
 
-<p align="justify"> The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot5.R"><b>HERE</b></a> and Coal combustion-related sources show a decreasing trend. </p>
+<p align="justify"> The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot6.R"><b>HERE</b></a> and Los Angeles County has seen the greatest changes over time in motor vehicle emissions  </p>
 
 ![plot6](plot6v.png) 
