@@ -12,13 +12,13 @@ str(SCC)
 
 coalgrep <- as.character(SCC[grep("Coal",SCC$Short.Name, ignore.case = TRUE),1])
 
-# Subsetting the data only for Coal Combustion related sources
+# 4. Subsetting the data only for Coal Combustion related sources
 subdat <- subset(NEI, NEI$SCC %in% coalgrep)
 
-# Aggregate data based on years
+# 5. Aggregate data based on years
 data_plot <- aggregate(Emissions ~ year,subdat, sum)
 
-# Plot the data
+# 6. Plot the data
 qplot(year,Emissions,data = data_plot, colour = Tree,
       geom = c("point", "path"),
       main = "Emissions from Coal Combustion related sources") + theme_bw() 
