@@ -34,6 +34,13 @@ The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master
 
 #### 3. Of the four types of sources indicated by the type (point, nonpoint, onroad, nonroad) variable, which of these four sources have seen decreases in emissions from 1999–2008 for Baltimore City? Which have seen increases in emissions from 1999–2008? 
 
-The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot3.R"><b>HERE</b></a> and the total emissions in the Baltimore City haven't decreased in the United States from 1999 to 2008. From the range 1999 to 2002 have decreased, then tey increased, and then, againm the emissions have decreased.
+The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot3.R"><b>HERE</b></a> and the “NON-ROAD”, “NONPOINT” and “ON-ROAD” type of sources have shown a decrease in the total PM2.5 Emissions. “POINT” type of source, shows the increase in the total PM2.5 emissions from 1999-2005 but again a decrease in 2008
 
 ![plot1](plot3.png) 
+
+
+#### 4. Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
+
+The code is <a href="https://github.com/MGoodche/datasciencecoursera/blob/master/ExploratoryDataAnalysis/Project_Week4/plot4.R"><b>HERE</b></a> and the “NON-ROAD”, “NONPOINT” and “ON-ROAD” type of sources have shown a decrease in the total PM2.5 Emissions. “POINT” type of source, shows the increase in the total PM2.5 emissions from 1999-2005 but again a decrease in 2008
+
+![plot1](plot4.png) 
