@@ -20,9 +20,9 @@ data_plot <- aggregate(Emissions ~ year,subdat, sum)
 
 # 6. Plot the data
 qplot(year,Emissions,data = data_plot,
-      geom = c("point", "path"),
-      main = "Emissions from Coal Combustion related sources") + theme_bw() +
-  geom_line(linetype="dashed", size = 1.5) + geom_point( size=5, shape=21, fill="blue")
+      geom = c("point", "path")) +
+      labs(x = "Year", y = "Emissions", title = "Emissions from Coal Combustion related sources (1999 - 2008)") + theme_minimal() +
+  geom_line(linetype="dashed", size = 1.5) + geom_point( size=5, shape=21, fill="grey")
 
 # 7. Save the picture
 dev.copy(png, file = "plot4.png" ,width = 500, height = 500)  
