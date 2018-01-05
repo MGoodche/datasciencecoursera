@@ -27,3 +27,7 @@ baltimore_angeles$City <- factor(baltimore_angeles$City, levels=c("06037", "2451
               axis.title.y = element_text(size = 12),
               strip.text.x = element_text(size = 12)) +
         theme_light()
+
+# 6. Save the picture
+dev.copy(png, file = "plot6.png" ,width = 500, height = 500)  
+dev.off()
