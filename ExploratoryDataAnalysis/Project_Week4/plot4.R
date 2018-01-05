@@ -19,9 +19,11 @@ subdat <- subset(NEI, NEI$SCC %in% coalgrep)
 data_plot <- aggregate(Emissions ~ year,subdat, sum)
 
 # 6. Plot the data
-qplot(year,Emissions,data = data_plot, colour = Tree,
+qplot(year,Emissions,data = data_plot,
       geom = c("point", "path"),
-      main = "Emissions from Coal Combustion related sources") + theme_bw() 
+      main = "Emissions from Coal Combustion related sources") + theme_bw() +
+  geom_line(linetype="dashed", size = 1.5) + geom_point( size=5, shape=21, fill="blue")
 
+# 7. Save the picture
 dev.copy(png, file = "plot4.png" ,width = 500, height = 500)  
 dev.off()
