@@ -34,7 +34,7 @@ The goal of th replication is to have independent people to do independent thing
 - R code
   - Raw scripts
   - Final scripts
-  - R Markdown files (optional)
+  - R Markdown files (optional): to create reproducible texts. You can create them using RStudio.
 - Text
   - Readme files
   - Text of analysis
