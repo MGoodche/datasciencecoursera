@@ -23,7 +23,21 @@ The goal of th replication is to have independent people to do independent thing
 - <b>Write up results</b>
 - <b>Create reproducible code</b>
 
+##### 3.2 Organizing a Data Analysis
 
+1. Data
+- Raw data
+- Processed data
+2. Figures
+- Exploratory figures
+- Final figures
+3. R code
+- Raw scripts
+- Final scripts
+- R Markdown files (optional)
+4. Text
+- Readme files
+- Text of analysis
 
 
 
