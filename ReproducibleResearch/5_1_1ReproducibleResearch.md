@@ -11,7 +11,7 @@ The goal of th replication is to have independent people to do independent thing
 #### 3. Structure of a Data 
 
 ##### 3.1 Steps in a data analysis
-- Define the question: 
+- Define the question: Data Science analysis starts with a question, and not every data analysis starts with the very specific or coherent question. The more specific the question is, the less you have to filter stuff.
 - Define the ideal data set
 - Determine what data you can access
 - Obtain the data
