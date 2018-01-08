@@ -16,7 +16,7 @@ The goal of th replication is to have independent people to do independent thing
 - Determine what data you can access
 - Obtain the data
 - Clean the data
-- Exploratory data analysis
+- Exploratory data analysis: Make concrete questions. If we want to build a model to kind of, we need to split the data set and a training set. So the idea is that we are going to use part of the test of the data set to build our model, and then we are going to use another part of the data set which is independent of the first part to actually determine how good our model is to make a prediction.
 - Statistical prediction/modeling
 - Interpret results
 - Challenge results
