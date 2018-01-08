@@ -16,7 +16,7 @@ The goal of th replication is to have independent people to do independent thing
 - <b>Determine what data you can access</b>
 - <b>Obtain the data</b>
 - <b>Clean the data</b>
-- <b>Exploratory data analysis:</b> Make concrete questions. If we want to build a model to kind of, we need to split the data set and a training set. So the idea is that we are going to use part of the test of the data set to build our model, and then we are going to use another part of the data set which is independent of the first part to actually determine how good our model is to make a prediction.
+- <b>Exploratory data analysis:</b> Make concrete questions. If we want to build a model to kind of, we need to split the data set and a training set. So the idea is that we are going to use part of the test of the data set to build our model, and then we are going to use another part of the data set which is independent of the first part to actually determine how good our model is to make a prediction. For the exploratory, we look the data, what are the data, what did the data look like, etc. A basic summary in short. Check for missing data. Create exploratory plots. Perform exploratory analyses (e.g. clustering)
 - <b>Statistical prediction/modeling</b>
 - <b>Interpret results</b>
 - <b>Challenge results</b>
