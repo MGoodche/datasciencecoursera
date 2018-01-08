@@ -27,17 +27,14 @@ The goal of th replication is to have independent people to do independent thing
 
 - Data
   - Raw data
-  - Processed data
-  
+  - Processed data 
 - Figures
   - Exploratory figures
   - Final figures
-  
 - R code
   - Raw scripts
   - Final scripts
   - R Markdown files (optional)
-  
 - Text
   - Readme files
   - Text of analysis
