@@ -26,11 +26,11 @@ Answer: It transforms the measured data into analytic data.
 
 ### 7) Which is a goal of literate statistical programming?
 
-Answer: 
+Answer: Combine explanatory text and data analysis code in a single document.
 
 ### 8) What does it mean to weave a literate statistical program?
 
-Answer: 
+Answer: A programming language like R.
 
 ### 9) Which of the following is required to implement a literate programming system?
 
@@ -38,4 +38,4 @@ Answer: A documentation language like LaTeX.
 
 ### 10) What is one way in which the knitr system differs from Sweave?
 
-Answer: 
+Answer: knitr allows for the use of markdown instead of LaTeX.
