@@ -124,7 +124,7 @@ Add any steps here to process, scale or transform the data further before analys
         theme(legend.position = "none") + 
         scale_fill_gradient("Count", low = "white", high = "gray")  +
         scale_colour_economist()
-    plot_2
+    plot1
 
 ```
  
@@ -179,7 +179,7 @@ potential issue with missing data that could impact calculations on this set.
              x="5-minute interval IDnum")+
         theme_economist() +
         scale_colour_economist()
-    plot_4
+    plot2
 ```
  
  [back to top](#top) 
