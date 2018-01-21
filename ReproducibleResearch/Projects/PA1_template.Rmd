@@ -21,7 +21,7 @@ Click on links here to quickly view tasks completed in this assignment:
 3.  [Mean and median number of steps taken each day](#point-3) 
 4.  [Time series plot of the average number of steps taken](#point-4) 
 5.  [The 5-minute interval that, on average, contains the maximum number of steps](#point-5) 
-6.  [Code to describe and show a strategy for imputing missing data](#point-5) 
+
 
 
 The data for this assignment comes from from the course web site:
