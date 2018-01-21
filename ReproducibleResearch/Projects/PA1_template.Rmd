@@ -1,0 +1,359 @@
+---
+title: "Reproducible Research - Peer Assessment 1"
+author: "Miriam P."
+date: "21/01/2018"
+output:
+  pdf_document: default
+  html_document:
+    theme: flatly
+---
+
+## <a name="top"></a>Overview
+
+This document describes an analysis done for an assignment of the Coursera Reproducible Research Course from Johns Hopkins University. 
+
+Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a large amount of data about personal activity relatively inexpensively. These IoT devices are part of the quantified self movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it. 
+
+Click on links here to quickly view tasks completed in this assignment:
+
+1.  [Code for reading in the dataset and/or processing the data](#point1) 
+2.  [Histogram of the total number of steps taken each day](#point-2) 
+3.  [Mean and median number of steps taken each day](#point-3) 
+4.  [Time series plot of the average number of steps taken](#point-4) 
+5.  [The 5-minute interval that, on average, contains the maximum number of steps](#point-5) 
+6.  [Code to describe and show a strategy for imputing missing data](#point-5) 
+7.  [Histogram of the total steps per day after missing values are imputed](#point-7) 
+8.  [Panel plot comparing average steps per 5-minute interval across weekdays and weekends](#point-8) 
+9.  [All of the R code needed to reproduce the results (numbers, plots, etc.)](#point-9) 
+
+
+The data for this assignment comes from from the course web site:
+
+*   [activityData](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip )
+
+## Details
+
+Before beginning the project, be sure to load the required R libraries and set any environmental variables. Note that setting messages in markdown to false 
+suppresses messages from library loading such as version number and dependencies.
+Updating to latest versions of these libraries may improve ability to obtain
+results fairly similar to the steps outlined here.
+
+```{r, echo=TRUE, results='hide', warning=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+# Clear environment of prior calculations. For best results always create/use an R project to run this.
+    rm(list=ls())
+```
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+# load libraries
+library(data.table)
+library(dplyr)
+library(knitr)
+library(ggplot2)
+library(ggthemes)
+library(Hmisc)
+
+
+
+```
+
+### <a name="point1"></a>1.    Load and Clean Data
+
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+#### A.  Loading data
+# set working environment
+    workDataDirStr <- paste(getwd(),"/", sep="")
+# Load the files. Using NA function to assure clean file
+    read.activity <- function(file) {
+        fread(file, na.strings=c("NA", ""))
+    } 
+    activityData <- read.activity(paste(workDataDirStr, "activity.csv", sep=""))
+```
+
+*   Dimensions of activityData (rows,columns): `r dim(activityData)`
+
+Add any steps here to process, scale or transform the data further before analysis:
+
+```{r message=FALSE, warning=FALSE}
+#### B.  Cleaning data
+# convert date string to date datatype
+    activityData$date<-as.Date(activityData$date)
+# Since have two libraries with wday function specify lubridate to add Weekday
+    activityData$Weekday<-lubridate::wday(activityData$date, label = TRUE, abbr = FALSE)
+# convert all steps to whole number
+    activityData$steps<-round(activityData$steps, digits=0)
+```
+ 
+ [back to top](#top)
+ 
+-----
+
+### <a name="point-2"></a>2. Make a histogram of the total number of steps taken each day
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+# Data Exploration - What is mean total number of steps taken per day, per weekday, per interval?
+
+#### A.  Pre-processing
+# Query and convert dataset for plotting
+    activityData.sums <- activityData %>%
+    group_by(date,Weekday) %>%
+    summarise(totalSteps = sum(steps, na.rm=TRUE))
+# Get max number of steps for largest interval for extending y-axis to fit labels.
+    activityData.max <- round(max(activityData.sums$totalSteps, na.rm = TRUE),digits=0)
+# Get initial averaging data for histogram plot
+    activityData.mean <- round(mean(activityData.sums$totalSteps, na.rm = TRUE),digits=0)
+    activityData.median <- round(median(activityData.sums$totalSteps, na.rm = TRUE),digits=0)
+```
+
+```{r, error=FALSE, message=FALSE, warning=FALSE}
+#### B.  Plotting
+# Prepare labels for plot 
+    textlab_1 <-  paste("Mean = ", activityData.mean, sep="")
+    textlab_2 <-  paste("Median = ", activityData.median, sep="")
+# Define and call plot
+    plot_2 <- ggplot(data=activityData.sums, aes(activityData.sums$totalSteps)) + 
+        geom_histogram(
+                 col="black", 
+                 aes(fill=..count..),
+                 alpha = .8,
+                 binwidth = 2000) +
+        labs(title = "Frequency Distribution Histogram of Step Activity",
+        y="% Frequency",
+        x="Total Steps per Day") +
+        theme_economist() +
+        geom_vline(xintercept = activityData.mean, colour="blue", linetype = "solid") +
+        geom_vline(xintercept = activityData.median, colour="red", linetype = "longdash") +
+        annotate("text", label = textlab_1, x = activityData.mean, y = 15, size = 5, colour = "blue") +
+        annotate("text", label = textlab_2, x = activityData.median, y = 13, size = 5, colour = "red") +
+        theme(legend.position = "none") + 
+        scale_fill_gradient("Count", low = "white", high = "gray")  +
+        scale_colour_economist()
+    plot_2
+
+```
+ 
+ [back to top](#top) 
+ 
+-----
+
+### <a name="point-3"></a>3. Calculate and report the mean/median total steps taken per day
+
+```{r}
+#### A.  Calculate and Display initial daily averaging data
+    dailyAvgSteps <- activityData.sums %>%
+    group_by(Weekday,totalSteps) %>%
+    filter(!is.na(totalSteps))
+
+    dailyAvgSteps           #Preveview of daily average ateps
+
+#### B. Describe norms          
+    dailyAvgSteps.mean   <- round(mean(dailyAvgSteps$totalSteps, na.rm = TRUE), digits=0)
+    dailyAvgSteps.mean      # Mean number of steps
+    
+    dailyAvgSteps.median <- round(median(dailyAvgSteps$totalSteps, na.rm = TRUE), digits=0)
+    dailyAvgSteps.median    # Median number of steps
+   
+```
+
+Answer: The plot shows that the mean is lower than the median indicating a
+potential issue with missing data that could impact calculations on this set.
+
+ [back to top](#top)
+ 
+-----
+
+### <a name="point-4"></a>4. Display a time series plot
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+#### A.  What is the average daily activity pattern?
+    activityData.intervals <- activityData %>%
+    group_by(interval) %>%
+    filter(!is.na(steps)) %>%
+    summarise(meanSteps = mean(steps, na.rm=TRUE))
+
+    activityData.intervals   # Preview of average steps per tnterval
+```
+
+```{r}
+#### B.  Prepare a histogram of frequency counts/percentages.
+    plot_4 <- ggplot(data=activityData.intervals, aes(x=interval, y=meanSteps)) +
+        geom_line(colour="gray", linetype="solid", size=1.5) + 
+        labs(title = "Interval Step Activity Drilldown",
+             y="Average Steps per Interval",
+             x="5-minute interval IDnum")+
+        theme_economist() +
+        scale_colour_economist()
+    plot_4
+```
+ 
+ [back to top](#top) 
+ 
+-----
+
+###  <a name="point-5"></a>5. Determine average daily maximum steps in a 5-minute interval
+```{r}
+#### A. Find the largest item in series and call related descriptive informat
+    mostInt <- which.max(activityData.intervals$meanSteps)
+    intervalMax <- activityData.intervals[mostInt,]
+    maxIntID <- intervalMax$interval
+    maxSteps <- round(intervalMax$meanSteps, digits=0)
+```
+Answer: The most number of steps occurred in the morning
+
+*   The number of Most Steps: `r maxSteps`
+*   Occurred at Interval ID (time of day): `r maxIntID`
+
+ [back to top](#top) 
+ 
+-----
+
+###  <a name="point-6"></a>6. Impute missing values
+
+Calculate and report the total and missing values in the dataset: 
+
+```{r}
+#### A. Calculate total number of missing values in dataset:
+    numTotalValues <- length(activityData$steps)
+    numMissingValues <- length(which(is.na(activityData$steps)))
+```
+
+BEFORE ADJUSTMENT
+
+*   Number of total values: `r numTotalValues`
+*   Number of missing values: `r numMissingValues`
+ *  Percent Missing : `r (numMissingValues/numTotalValues)*100` percent
+
+Fill in the missing observations with mean-derived data:
+
+```{r}
+#### B. Impute misssing value based on daily average:
+    activityData2 <- activityData
+    activityData2$steps <- round(impute(activityData$steps, fun=mean), digits = 0)
+    numTotalValues2 <- length(activityData2$steps)
+    numMissingValues2 <- length(which(is.na(activityData2$steps)))
+```
+
+AFTER ADJUSTMENT
+
+*   Number of total values: `r numTotalValues2`
+*   Number of missing values: `r numMissingValues2`
+
+Answer: The missing values have all been filled in with the estimated ones.
+
+ [back to top](#top)
+ 
+-----
+
+###  <a name="point-7"></a>7. Make histogram plot of total number of steps taken each day with additional data 
+
+```{r}
+# Data Exploration - What is mean total number of steps taken per day, per weekday, per interval?
+
+#### A.  Pre-processing
+# Query and convert dataset for plotting
+    activityData2.sums <- activityData2 %>%
+    group_by(date,Weekday) %>%
+    summarise(totalSteps = sum(steps, na.rm=TRUE))
+# Get max number of steps for largest interval for extending y-axis to fit labels.
+    activityData2.max <- round(max(activityData2.sums$totalSteps, na.rm = TRUE),digits=0)
+# Get initial averaging data for histogram plot
+    activityData2.mean <- round(mean(activityData2.sums$totalSteps, na.rm = TRUE),digits=0)
+    activityData2.median <- round(median(activityData2.sums$totalSteps, na.rm = TRUE),digits=0)
+```    
+    
+```{r}
+#### B.  Plotting 
+# Prepare labels for plot 
+    textlab_1 <-  paste("Mean = ", activityData2.mean, sep="")
+    textlab_2 <-  paste("Median = ", activityData2.median, sep="")
+# Define and call plot
+    plot_7 <- ggplot(data=activityData2.sums, aes(activityData2.sums$totalSteps)) + 
+        geom_histogram(
+                 col="black", 
+                 aes(fill=..count..),
+                 alpha = .8,
+                 binwidth = 2000) +
+        labs(title = "Frequency Distribution Histogram of Step Activity (adjusted)",
+        y="% Frequency",
+        x="Total Steps per Day (adjusted)") +
+        theme_economist() +
+        geom_vline(xintercept = activityData2.mean, colour="blue", linetype = "solid") +
+        geom_vline(xintercept = activityData2.median, colour="red", linetype = "longdash") +
+        annotate("text", label = textlab_1, x = activityData2.mean, y = 15, size = 5, colour = "blue") +
+        annotate("text", label = textlab_2, x = activityData2.median, y = 13, size = 5, colour = "red") +
+        #theme(legend.title=element_blank()) + 
+        theme(legend.position = "none") + 
+        #theme(text = element_text(size=12), axis.text.x = element_text(angle=90, vjust=1)) +
+        scale_fill_gradient("Count", low = "white", high = "gray")  +
+        #theme(legend.position=c(.7, .75)) +
+        scale_colour_economist()
+    plot_7
+```
+
+Calculate and report the mean and median total number of steps taken per day:
+
+```{r}
+##### C.  Measuring new norms and impact of differences
+    activityData2.mean   <- round(mean(activityData2.sums$totalSteps, na.rm = TRUE),digits=0)
+    activityData2.mean      # Mean number of steps (adjusted)
+
+    activityData2.median <- round(median(activityData2.sums$totalSteps, na.rm = TRUE),digits=0)
+    activityData2.median    # Median number of steps (adjusted)
+```
+
+*   What is potential impact on results of adding data to NAs? 
+    * Mean Adjusted / Mean Raw :`r activityData2.mean/activityData.mean`
+    * Median Adjusted / Median Raw :`r activityData2.median/activityData.median`
+
+Answer: Given that 13 percent of the raw data was empty the additional imputed 
+values raised the mean by 14.94 percent and the median by only 2.51 percent. 
+Now the adjusted mean and median are more similar, which was the goal of the
+estimation process.
+
+ [back to top](#top)
+ 
+-----
+
+###  <a name="point-8"></a>8. Are there differences in activity patterns between weekdays and weekends?
+
+Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day:
+
+```{r}
+#### A.  Transforming dataset features and splitting data
+
+# Add new dataType field
+    activityData2$dateType <-  ifelse(as.POSIXlt(activityData2$date)$wday %in% c(0,6), 'weekend', 'weekday')
+
+# This is a shorter version of interval set creation
+   activityData2Interval <- aggregate(steps ~ interval + dateType, data=activityData2, mean)
+```
+
+Make a panel plot containing a time series plot:
+
+```{r}
+#### B.  Plotting  
+
+    plot_8 <- ggplot(activityData2Interval, aes(interval, steps, colour=dateType)) +
+        geom_line(linetype="solid", size=1.5) +
+        facet_grid(dateType ~ .) +
+        labs(title = "Frequency Distribution of Step Activity",
+            x="5-minute interval IDnum",
+            y="Average number total daily steps") +
+        theme_economist() +
+        theme(legend.position="none") +
+        scale_colour_economist()
+    plot_8
+
+```
+ 
+Answer: It's clear from the plot that weekday activity is mostly in the AM.
+While both sets experience an early morning effect, for weekend exercise 
+the activity is spread throughout the day.
+ 
+ [back to top](#top) 
+ 
+
+----- 
+
+
+
