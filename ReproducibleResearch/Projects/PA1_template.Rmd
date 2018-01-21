@@ -22,8 +22,6 @@ Click on links here to quickly view tasks completed in this assignment:
 4.  [Time series plot of the average number of steps taken](#point-4) 
 5.  [The 5-minute interval that, on average, contains the maximum number of steps](#point-5) 
 6.  [Code to describe and show a strategy for imputing missing data](#point-5) 
-7.  [Histogram of the total steps per day after missing values are imputed](#point-7) 
-8.  [Panel plot comparing average steps per 5-minute interval across weekdays and weekends](#point-8) 
 
 
 The data for this assignment comes from from the course web site:
@@ -82,8 +80,7 @@ Add any steps here to process, scale or transform the data further before analys
 # convert all steps to whole number
     activityData$steps<-round(activityData$steps, digits=0)
 ```
- 
- [back to top](#top)
+
  
 -----
 
@@ -131,7 +128,7 @@ Add any steps here to process, scale or transform the data further before analys
 
 ```
  
- [back to top](#top) 
+
  
 -----
 
@@ -205,154 +202,3 @@ Answer: The most number of steps occurred in the morning
  [back to top](#top) 
  
 -----
-
-###  <a name="point-6"></a>6. Impute missing values
-
-Calculate and report the total and missing values in the dataset: 
-
-```{r}
-#### A. Calculate total number of missing values in dataset:
-    numTotalValues <- length(activityData$steps)
-    numMissingValues <- length(which(is.na(activityData$steps)))
-```
-
-BEFORE ADJUSTMENT
-
-*   Number of total values: `r numTotalValues`
-*   Number of missing values: `r numMissingValues`
- *  Percent Missing : `r (numMissingValues/numTotalValues)*100` percent
-
-Fill in the missing observations with mean-derived data:
-
-```{r}
-#### B. Impute misssing value based on daily average:
-    activityData2 <- activityData
-    activityData2$steps <- round(impute(activityData$steps, fun=mean), digits = 0)
-    numTotalValues2 <- length(activityData2$steps)
-    numMissingValues2 <- length(which(is.na(activityData2$steps)))
-```
-
-AFTER ADJUSTMENT
-
-*   Number of total values: `r numTotalValues2`
-*   Number of missing values: `r numMissingValues2`
-
-Answer: The missing values have all been filled in with the estimated ones.
-
- [back to top](#top)
- 
------
-
-###  <a name="point-7"></a>7. Make histogram plot of total number of steps taken each day with additional data 
-
-```{r}
-# Data Exploration - What is mean total number of steps taken per day, per weekday, per interval?
-
-#### A.  Pre-processing
-# Query and convert dataset for plotting
-    activityData2.sums <- activityData2 %>%
-    group_by(date,Weekday) %>%
-    summarise(totalSteps = sum(steps, na.rm=TRUE))
-# Get max number of steps for largest interval for extending y-axis to fit labels.
-    activityData2.max <- round(max(activityData2.sums$totalSteps, na.rm = TRUE),digits=0)
-# Get initial averaging data for histogram plot
-    activityData2.mean <- round(mean(activityData2.sums$totalSteps, na.rm = TRUE),digits=0)
-    activityData2.median <- round(median(activityData2.sums$totalSteps, na.rm = TRUE),digits=0)
-```    
-    
-```{r}
-#### B.  Plotting 
-# Prepare labels for plot 
-    textlab_1 <-  paste("Mean = ", activityData2.mean, sep="")
-    textlab_2 <-  paste("Median = ", activityData2.median, sep="")
-# Define and call plot
-    plot_7 <- ggplot(data=activityData2.sums, aes(activityData2.sums$totalSteps)) + 
-        geom_histogram(
-                 col="black", 
-                 aes(fill=..count..),
-                 alpha = .8,
-                 binwidth = 2000) +
-        labs(title = "Frequency Distribution Histogram of Step Activity (adjusted)",
-        y="% Frequency",
-        x="Total Steps per Day (adjusted)") +
-        theme_economist() +
-        geom_vline(xintercept = activityData2.mean, colour="blue", linetype = "solid") +
-        geom_vline(xintercept = activityData2.median, colour="red", linetype = "longdash") +
-        annotate("text", label = textlab_1, x = activityData2.mean, y = 15, size = 5, colour = "blue") +
-        annotate("text", label = textlab_2, x = activityData2.median, y = 13, size = 5, colour = "red") +
-        #theme(legend.title=element_blank()) + 
-        theme(legend.position = "none") + 
-        #theme(text = element_text(size=12), axis.text.x = element_text(angle=90, vjust=1)) +
-        scale_fill_gradient("Count", low = "white", high = "gray")  +
-        #theme(legend.position=c(.7, .75)) +
-        scale_colour_economist()
-    plot_7
-```
-
-Calculate and report the mean and median total number of steps taken per day:
-
-```{r}
-##### C.  Measuring new norms and impact of differences
-    activityData2.mean   <- round(mean(activityData2.sums$totalSteps, na.rm = TRUE),digits=0)
-    activityData2.mean      # Mean number of steps (adjusted)
-
-    activityData2.median <- round(median(activityData2.sums$totalSteps, na.rm = TRUE),digits=0)
-    activityData2.median    # Median number of steps (adjusted)
-```
-
-*   What is potential impact on results of adding data to NAs? 
-    * Mean Adjusted / Mean Raw :`r activityData2.mean/activityData.mean`
-    * Median Adjusted / Median Raw :`r activityData2.median/activityData.median`
-
-Answer: Given that 13 percent of the raw data was empty the additional imputed 
-values raised the mean by 14.94 percent and the median by only 2.51 percent. 
-Now the adjusted mean and median are more similar, which was the goal of the
-estimation process.
-
- [back to top](#top)
- 
------
-
-###  <a name="point-8"></a>8. Are there differences in activity patterns between weekdays and weekends?
-
-Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day:
-
-```{r}
-#### A.  Transforming dataset features and splitting data
-
-# Add new dataType field
-    activityData2$dateType <-  ifelse(as.POSIXlt(activityData2$date)$wday %in% c(0,6), 'weekend', 'weekday')
-
-# This is a shorter version of interval set creation
-   activityData2Interval <- aggregate(steps ~ interval + dateType, data=activityData2, mean)
-```
-
-Make a panel plot containing a time series plot:
-
-```{r}
-#### B.  Plotting  
-
-    plot_8 <- ggplot(activityData2Interval, aes(interval, steps, colour=dateType)) +
-        geom_line(linetype="solid", size=1.5) +
-        facet_grid(dateType ~ .) +
-        labs(title = "Frequency Distribution of Step Activity",
-            x="5-minute interval IDnum",
-            y="Average number total daily steps") +
-        theme_economist() +
-        theme(legend.position="none") +
-        scale_colour_economist()
-    plot_8
-
-```
- 
-Answer: It's clear from the plot that weekday activity is mostly in the AM.
-While both sets experience an early morning effect, for weekend exercise 
-the activity is spread throughout the day.
- 
- [back to top](#top) 
- 
-
------ 
-
-
-
