@@ -24,7 +24,6 @@ Click on links here to quickly view tasks completed in this assignment:
 6.  [Code to describe and show a strategy for imputing missing data](#point-5) 
 7.  [Histogram of the total steps per day after missing values are imputed](#point-7) 
 8.  [Panel plot comparing average steps per 5-minute interval across weekdays and weekends](#point-8) 
-9.  [All of the R code needed to reproduce the results (numbers, plots, etc.)](#point-9) 
 
 
 The data for this assignment comes from from the course web site:
