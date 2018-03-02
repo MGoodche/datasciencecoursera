@@ -1,15 +1,27 @@
 #### 1. In a population of interest, a sample of 9 men yielded a sample average brain volume of 1,100cc and a standard deviation of 30cc. What is a 95% Student's T confidence interval for the mean brain volume in this new population?
 
 Answer:
+
+```[R]
 > q = 9
 > mean = 1100
 > deviation = 30
 > quantile = 0.975
 > mean + c(-1,1)*qt(quantile,q-1)*deviation/sqrt(q)
 [1] 1076.94 1123.06
+```
 
 #### 2. A diet pill is given to 9 subjects over six weeks. The average difference in weight (follow up - baseline) is -2 pounds. What would the standard deviation of the difference in weight have to be for the upper endpoint of the 95% T confidence interval to touch 0?
 
+Answer
+
+```[R]
+> q = 9
+> mean = -2
+> quantile = 0.975
+> 2*sqrt(q)/qt(quantile,q-1)
+[1] 2.601903
+```
 
 #### 3. In an effort to improve running performance, 5 runners were either given a protein supplement or placebo. Then, after a suitable washout period, they were given the opposite treatment. Their mile times were recorded under both the treatment and placebo, yielding 10 measurements with 2 per subject. The researchers intend to use a T test and interval to investigate the treatment. Should they use a paired or independent group T test and interval?
 
