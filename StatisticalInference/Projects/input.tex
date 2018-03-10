@@ -1,0 +1,342 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Statistical Inference Project - Simulation},
+            pdfauthor={Miriam PavÃ³n},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{{#1}}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Statistical Inference Project - Simulation}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Miriam PavÃ³n}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{10/03/2018}
+
+
+\begin{document}
+\maketitle
+
+\subsection{Overview}\label{overview}
+
+This project is to investigate the exponential distribution in R and
+compare it with the Central Limit Theorem. The exponential distribution
+can be simulated in R with rexp(n, lambda) where lambda is the rate
+parameter. The mean of exponential distribution is 1/lambda and the
+standard deviation is also 1/lambda.
+
+Click on links here to quickly view tasks completed in this assignment:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \protect\hyperlink{point1}{Simulation}
+\item
+  \protect\hyperlink{point2}{Show the sample mean and compare it to the
+  theoretical mean of the distribution.}
+\item
+  \protect\hyperlink{point3}{Show how variable the sample is (via
+  variance) and compare it to the theoretical variance of the
+  distribution.}
+\item
+  \protect\hyperlink{point4}{Show that the distribution is approximately
+  normal.}
+\end{enumerate}
+
+\subsection{Data}\label{data}
+
+The data for this assignment comes from this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s <-}\StringTok{ }\DecValTok{1000} \CommentTok{#Number of simulations}
+\NormalTok{lambda <-}\StringTok{ }\FloatTok{0.2} \CommentTok{#Rate for all simulations}
+\NormalTok{n <-}\StringTok{ }\DecValTok{40} \CommentTok{#Number of samples}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{240}\NormalTok{) }\CommentTok{#set seed for reproducability}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Requirements}\label{requirements}
+
+For this assignment you will need some specific tools
+
+\emph{} RStudio: \emph{} You will need RStudio to publish your completed
+analysis document to RPubs. You can also use RStudio to edit/write your
+analysis.
+
+\emph{} knitr:\emph{} You will need the knitr package in order to
+compile your R Markdown document and convert it to HTML
+
+Before beginning the project, be sure to load the required R libraries
+and set any environmental variables. Note that setting messages in
+markdown to false suppresses messages from library loading such as
+version number and dependencies. Updating to latest versions of these
+libraries may improve ability to obtain results fairly similar to the
+steps outlined here.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# load libraries}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{library}\NormalTok{(knitr)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{1. Simulations}\label{simulations}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{#### 1. Simulation}
+
+\NormalTok{simulation <-}\StringTok{ }\KeywordTok{replicate}\NormalTok{(s, }\KeywordTok{mean}\NormalTok{(}\KeywordTok{rexp}\NormalTok{(n,lambda)))}
+
+\NormalTok{simulation_mean <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(simulation) }\CommentTok{#Distribution Mean}
+\NormalTok{simulation_mean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.026972
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simulation_median <-}\StringTok{ }\KeywordTok{median}\NormalTok{(simulation) }\CommentTok{#Median}
+\NormalTok{simulation_median}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.997169
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simulation_sd     <-}\StringTok{ }\KeywordTok{sd}\NormalTok{(simulation) }\CommentTok{#Standard Deviation}
+\NormalTok{simulation_sd }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8111959
+\end{verbatim}
+
+\protect\hyperlink{top}{Back to top}
+
+\subsubsection{2. Show the sample mean and compare it to the theoretical
+mean of the
+distribution.}\label{show-the-sample-mean-and-compare-it-to-the-theoretical-mean-of-the-distribution.}
+
+The simulation and the theory means are the next ones:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simulation_mean  <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(simulation) }\CommentTok{#Distribution Mean}
+\NormalTok{simulation_mean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.026972
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theoretical_mean  <-}\StringTok{ }\DecValTok{1}\NormalTok{/lambda }\CommentTok{#Analytical Mean}
+\NormalTok{theoretical_mean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+The actual center of the distribution of the average of 40 exponetialsis
+very close to its theoretical center of the distribution.
+
+This is code for the graphical representation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(simulation, }\DataTypeTok{xlab =} \StringTok{"Mean"}\NormalTok{, }\DataTypeTok{main =} \StringTok{"Histogram of 1000 means of 40 sample exponentials"}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v =} \NormalTok{simulation_mean, }\DataTypeTok{col =} \StringTok{"green"}\NormalTok{,}\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v =} \NormalTok{theoretical_mean, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{,}\DataTypeTok{lwd=}\DecValTok{1}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{1}\NormalTok{)}
+\KeywordTok{legend}\NormalTok{(}\StringTok{'topright'}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\StringTok{"Theoretical Mean"}\NormalTok{,}\StringTok{"Sample Mean"}\NormalTok{), }
+       \DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"green"}\NormalTok{), }\DataTypeTok{lty=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{bty =} \StringTok{"n"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{StatisticalInferenceProject_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\protect\hyperlink{top}{Back to top}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsubsection{3. Show how variable the sample is (via variance) and
+compare it to the theoretical variance of the
+distribution.}\label{show-how-variable-the-sample-is-via-variance-and-compare-it-to-the-theoretical-variance-of-the-distribution.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Theoretical variance}
+\NormalTok{theoretical_sd <-}\StringTok{ }\NormalTok{(}\DecValTok{1}\NormalTok{/lambda)/}\KeywordTok{sqrt}\NormalTok{(n)}
+\NormalTok{theoretical_variance <-}\StringTok{ }\NormalTok{theoretical_sd^}\DecValTok{2}
+\NormalTok{theoretical_variance}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.625
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Simulated variance}
+\NormalTok{simulated_variance  <-}\StringTok{ }\KeywordTok{var}\NormalTok{(simulation)}
+\NormalTok{simulated_variance}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6580389
+\end{verbatim}
+
+So, as we can see, both variances are quite close to each other.
+
+\protect\hyperlink{top}{Back to top}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsubsection{4. Show that the distribution is approximately
+normal.}\label{show-that-the-distribution-is-approximately-normal.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{xfit <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\KeywordTok{min}\NormalTok{(simulation), }\KeywordTok{max}\NormalTok{(simulation), }\DataTypeTok{length=}\DecValTok{100}\NormalTok{)}
+\NormalTok{yfit <-}\StringTok{ }\KeywordTok{dnorm}\NormalTok{(xfit, theoretical_mean , theoretical_sd)}
+\KeywordTok{hist}\NormalTok{(simulation,}\DataTypeTok{breaks=}\NormalTok{n,}\DataTypeTok{prob=}\NormalTok{T,}\DataTypeTok{xlab =} \StringTok{"Means"}\NormalTok{,}\DataTypeTok{main=}\StringTok{"Density of means"}\NormalTok{,}\DataTypeTok{ylab=}\StringTok{"Density"}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(xfit, yfit, }\DataTypeTok{pch=}\DecValTok{22}\NormalTok{, }\DataTypeTok{col=}\StringTok{"green"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{,}\DataTypeTok{lty=}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{StatisticalInferenceProject_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+The distribution is approximately normal.
+
+\protect\hyperlink{top}{Back to top}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+
+\end{document}

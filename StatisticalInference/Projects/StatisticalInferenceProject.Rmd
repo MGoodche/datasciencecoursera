@@ -1,0 +1,139 @@
+
+---
+title: "Statistical Inference Project - Simulation"
+author: "Miriam Pavón"
+date: "10/03/2018"
+output:
+  pdf_document: default
+  html_document:
+    theme: flatly
+---
+## <a name="top"></a>Overview
+
+This project is to investigate the exponential distribution in R and compare it with the Central Limit Theorem. The exponential distribution can be simulated in R with rexp(n, lambda) where lambda is the rate parameter. The mean of exponential distribution is 1/lambda and the standard deviation is also 1/lambda.
+
+
+Click on links here to quickly view tasks completed in this assignment:
+
+1.  [Simulation](#point1)
+2.  [Show the sample mean and compare it to the theoretical mean of the distribution.](#point2) 
+3.  [Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.](#point3) 
+4.  [Show that the distribution is approximately normal.](#point4) 
+
+## Data
+
+The data for this assignment comes from this:
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+s <- 1000 #Number of simulations
+lambda <- 0.2 #Rate for all simulations
+n <- 40 #Number of samples
+set.seed(240) #set seed for reproducability
+```
+
+
+## Requirements
+
+For this assignment you will need some specific tools
+
+*<br>* RStudio: *</br>* You will need RStudio to publish your completed analysis document to RPubs. You can also use RStudio to edit/write your analysis.
+
+*<br>* knitr:*</br>* You will need the knitr package in order to compile your R Markdown document and convert it to HTML
+
+Before beginning the project, be sure to load the required R libraries and set any environmental variables. Note that setting messages in markdown to false 
+suppresses messages from library loading such as version number and dependencies.
+Updating to latest versions of these libraries may improve ability to obtain
+results fairly similar to the steps outlined here.
+
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+# load libraries
+library(ggplot2)
+library(knitr)
+```
+
+### <a name="point1"></a>1.    Simulations
+
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+#### 1. Simulation
+
+simulation <- replicate(s, mean(rexp(n,lambda)))
+
+simulation_mean <- mean(simulation) #Distribution Mean
+simulation_mean
+
+simulation_median <- median(simulation) #Median
+simulation_median
+
+simulation_sd     <- sd(simulation) #Standard Deviation
+simulation_sd 
+
+```
+ [Back to top](#top)
+
+### <a name="point2"></a>2.    Show the sample mean and compare it to the theoretical mean of the distribution.
+
+The simulation and the theory means are the next ones:
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+simulation_mean  <- mean(simulation) #Distribution Mean
+simulation_mean
+
+theoretical_mean  <- 1/lambda #Analytical Mean
+theoretical_mean
+```
+The actual center of the distribution of the average of 40 exponetialsis very close to its theoretical center of the distribution.
+
+This is code for the graphical representation:
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+hist(simulation, xlab = "Mean", main = "Histogram of 1000 means of 40 sample exponentials")
+abline(v = simulation_mean, col = "green",lwd=3, lty=2)
+abline(v = theoretical_mean, col = "red",lwd=1, lty=1)
+legend('topright', c("Theoretical Mean","Sample Mean"), 
+       col=c("red", "green"), lty=c(1,1), bty = "n")
+
+```
+ 
+ [Back to top](#top)
+ 
+-----
+
+
+### <a name="point3"></a>3.    Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+# Theoretical variance
+theoretical_sd <- (1/lambda)/sqrt(n)
+theoretical_variance <- theoretical_sd^2
+theoretical_variance
+
+# Simulated variance
+simulated_variance  <- var(simulation)
+simulated_variance
+
+```
+So, as we can see, both variances are quite close to each other.
+
+ 
+ [Back to top](#top)
+ 
+-----
+
+### <a name="point4"></a>4.    Show that the distribution is approximately normal.
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+xfit <- seq(min(simulation), max(simulation), length=100)
+yfit <- dnorm(xfit, theoretical_mean , theoretical_sd)
+hist(simulation,breaks=n,prob=T,xlab = "Means",main="Density of means",ylab="Density")
+lines(xfit, yfit, pch=22, col="green", lwd=3,lty=5)
+
+```
+
+The distribution is approximately normal. 
+
+ 
+ [Back to top](#top)
+ 
+-----
+
