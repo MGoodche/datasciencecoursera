@@ -1,0 +1,171 @@
+
+---
+title: "Statistical Inference Project - ToothGrowth Data"
+author: "Miriam Pavón"
+date: "11/03/2018"
+output:
+  pdf_document: default
+  html_document:
+    theme: flatly
+---
+## <a name="top"></a>Overview
+
+This project is to investigate the effect of Vitamin C on Tooth Growth in Guinea Pigs. The response is the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, orange juice or ascorbic acid (a form of vitamin C and coded as VC).
+
+
+Click on links here to quickly view tasks completed in this assignment:
+
+1.  [Load the ToothGrowth data and perform some basic exploratory data analyses.](#point1)
+2.  [Provide a basic summary of the data.](#point2) 
+3.  [Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering).](#point3) 
+4.  [State your conclusions and the assumptions needed for your conclusions.](#point4) 
+
+## Data
+
+The data for this assignment comes from C. I. Bliss (1952). The Statistics of Bioassay. Academic Press.
+
+The data frame is composed of 60 observations on 3 variables.
+
+[,1]	len	numeric	Tooth length
+*<br>* 
+[,2]	supp	factor	Supplement type (VC or OJ).
+*<br>* 
+[,3]	dose	numeric	Dose in milligrams/day
+
+
+
+## Requirements
+
+For this assignment you will need some specific tools
+
+*<br>* RStudio: *</br>* You will need RStudio to publish your completed analysis document to RPubs. You can also use RStudio to edit/write your analysis.
+
+*<br>* knitr:*</br>* You will need the knitr package in order to compile your R Markdown document and convert it to HTML
+
+Before beginning the project, be sure to load the required R libraries and set any environmental variables. Note that setting messages in markdown to false 
+suppresses messages from library loading such as version number and dependencies.
+Updating to latest versions of these libraries may improve ability to obtain
+results fairly similar to the steps outlined here.
+
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+# load libraries
+library(ggplot2)
+library(knitr)
+library(datasets)
+```
+
+### <a name="point1"></a>1. Load the ToothGrowth data and perform some basic exploratory data analyses.
+
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+# Load the data ToothGrowth
+data(ToothGrowth)
+# Look at the structure of the data
+str(ToothGrowth)
+# Dimension of the data
+dim(ToothGrowth)
+#Show the head of the data
+head(ToothGrowth)
+
+```
+
+
+ [Back to top](#top)
+
+### <a name="point2"></a>2. Provide a basic summary of the data.
+
+
+Now, the summary of the data:
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+summary(ToothGrowth)
+
+require(graphics)
+coplot(len ~ dose | supp, data = ToothGrowth, panel = panel.smooth,
+       xlab = "ToothGrowth data: length vs dose, given type of supplement")
+
+```
+
+There are two types of supplement: OJ or VC. In the next figure, you can see the comparation of these two types of supplement.
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+ggplot(data=ToothGrowth, aes(x=as.factor(dose), y=len, fill=supp)) +
+    geom_bar(stat="identity") +
+    scale_fill_brewer(palette="Set1") +
+    facet_grid(. ~ supp) +
+    xlab("Dose(mg)") +
+    ylab("Tooth length") 
+
+```
+
+Box plots are useful for identifying outliers and for comparing distributions. Figure provides a revealing summary of the data. 
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+means <- aggregate(len ~  supp, ToothGrowth, mean)
+
+ggplot(data=ToothGrowth, aes(x=supp, y=len, fill=supp)) + geom_boxplot() +
+stat_summary(fun.y=mean, colour="darkred", geom="point", shape=18, size=3,show_guide = FALSE) + geom_text(data = means, aes(label = len, y =len + 0.08))  + xlab("Supplement type") + ylab("Tooth length") + guides(fill=guide_legend(title="Supplement type"))
+
+
+```
+
+ 
+ [Back to top](#top)
+ 
+-----
+
+
+### <a name="point3"></a>3.   Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering).
+
+###  3.1  Hypothesis tests to compare tooth growth by supp
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+t.test(len ~ supp, data = ToothGrowth)
+
+```
+
+So, as we can see, Null hypothesis can not be rejected as confindence intervals contain zero and p-value > 0.05 (0.06)
+
+### 3.2  Hypothesis tests to compare tooth growth by dose levels
+
+First, we divided the data in three subset:
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+ToothGrowth.doses_0.5_1.0 <- subset (ToothGrowth, dose %in% c(0.5, 1.0)) 
+ToothGrowth.doses_0.5_2.0 <- subset (ToothGrowth, dose %in% c(0.5, 2.0)) 
+ToothGrowth.doses_1.0_2.0 <- subset (ToothGrowth, dose %in% c(1.0, 2.0))
+``` 
+
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+t.test(len ~ dose, data = ToothGrowth.doses_0.5_1.0)
+
+```
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+t.test(len ~ dose, data = ToothGrowth.doses_0.5_2.0)
+
+```
+
+```{r, collapse=FALSE, echo=TRUE, results='markup', error=FALSE, message=FALSE, warning=FALSE}
+t.test(len ~ dose, data = ToothGrowth.doses_1.0_2.0)
+
+```
+
+The p-value is all the cases is less than 0.05 and confindence intervals don't contain 0. We can reject the null hypothesis, this means that the tooth growth increase when the dose is increased.
+
+
+ [Back to top](#top)
+ 
+-----
+
+### <a name="point4"></a>4.    State your conclusions and the assumptions needed for your conclusions
+
+
+First, we can conclude that the difference in supplement type may not influence tooth growth. But, the dosage has an impact, the increase on the dosage seems to be have a direct impact with the tooth growth. 
+
+ 
+ [Back to top](#top)
+ 
+-----
+
