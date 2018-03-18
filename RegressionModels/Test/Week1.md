@@ -84,6 +84,12 @@ Coefficients:
 
 Answer: 1
 
+Note it is given that sd(Y)/sd(X)=2 and Cor(Y,X)=0.5.
+
+Therefore, we know that the regression coefficient would be:
+
+Cor(Y,X)sd(Y)sd(X)=0.5×2=1
+
 ### Question 5
 #### Students were given two hard tests and scores were normalized to have empirical mean 0 and variance 1. The correlation between the scores on the two tests was 0.4. What would be the expected score on Quiz 2 for a student who had a normalized score of 1.5 on Quiz 1?
 
