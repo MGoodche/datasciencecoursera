@@ -88,6 +88,7 @@ Answer: 1
 #### Students were given two hard tests and scores were normalized to have empirical mean 0 and variance 1. The correlation between the scores on the two tests was 0.4. What would be the expected score on Quiz 2 for a student who had a normalized score of 1.5 on Quiz 1?
 
 Answer: 0.6
+This is the classic regression to the mean problem. We are expecting the score to get multiplied by 0.4. So 1.5 * 0.4 = 0.6
 
 ### Question 6
 #### Consider the data given by the following
@@ -112,7 +113,7 @@ x <- c(0.8, 0.47, 0.51, 0.73, 0.36, 0.58, 0.57, 0.85, 0.44, 0.42)
 y <- c(1.39, 0.72, 1.55, 0.48, 1.19, -1.59, 1.23, -0.65, 1.49, 0.05)
 ```
 
-Answer:-1.713
+Answer:1.567
 
 ```[R]
 > x <- c(0.8, 0.47, 0.51, 0.73, 0.36, 0.58, 0.57, 0.85, 0.44, 0.42)
