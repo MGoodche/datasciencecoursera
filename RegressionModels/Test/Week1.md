@@ -131,6 +131,7 @@ Coefficients:
 #### You know that both the predictor and response have mean 0. What can be said about the intercept when you fit a linear regression?
 
 Answer: It must be identically 0.
+The intercept estimate is $\bar Y - \beta_1 \bar X$ and so will be zero.
 
 ### Question 9
 #### Consider the data given by
@@ -150,3 +151,6 @@ Answer: 0.573
 #### Let the slope having fit Y as the outcome and X as the predictor be denoted as β1. Let the slope from fitting X as the outcome and Y as the predictor be denoted as γ1. Suppose that you divide β1 by γ1; in other words consider β1/γ1. What is this ratio always equal to?
 
 Answer: Var(y)/Var(x)
+
+The β1=Cor(Y,X)SD(Y)/SD(X) and γ1=Cor(Y,X)SD(X)/SD(Y).
+Thus the ratio is then Var(Y)/Var(X).
