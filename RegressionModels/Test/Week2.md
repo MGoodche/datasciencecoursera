@@ -15,7 +15,7 @@ Answer:0.05296439
 > y <- c(0.67, 0.84, 0.6, 0.18, 0.85, 0.47, 1.1, 0.65, 0.36)
 > fit <- lm(y~x)
 # lm (predictor, outcome)
-> summary(fit)$coefficients
+> summary(fit)$coef
              Estimate Std. Error   t value   Pr(>|t|)
 (Intercept) 0.1884572  0.2061290 0.9142681 0.39098029
 x           0.7224211  0.3106531 2.3254912 0.05296439
@@ -41,6 +41,7 @@ Answer: 18.99098
 > predict(fit,data.frame(x=mean(x)), interval="confidence")
        fit      lwr      upr
 1 20.09062 18.99098 21.19027
+
 ```
 
 ### Question 4
@@ -59,8 +60,21 @@ Answer: 27.57355
 > predict(fit, data.frame(x=3), interval = ("prediction"))
        fit      lwr      upr
 1 21.25171 14.92987 27.57355
-```
 
+Also;
+fit <- lm(mpg ~ wt, data = mtcars)
+predict(fit, newdata = data.frame(wt = 3), interval = "prediction")
+```
+### Question 6
+#### Consider again the mtcars data set and a linear regression model with mpg as predicted by weight (in 1,000 lbs). A “short” ton is defined as 2,000 lbs. Construct a 95% confidence interval for the expected change in mpg per 1 short ton increase in weight. Give the lower endpoint.
+
+Answer: -12.973
+```[R]
+> fit <- lm(mpg ~ wt, data = mtcars)
+> confint(fit)[2, ] * 2
+##   2.5 %  97.5 % 
+## -12.973  -8.405
+```
 ### Question 7
 #### If my X from a linear regression is measured in centimeters and I convert it to meters what would happen to the slope coefficient?
 Answer: It would get multiplied by 100.
