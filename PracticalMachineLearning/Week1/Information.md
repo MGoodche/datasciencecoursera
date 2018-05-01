@@ -62,3 +62,12 @@ we can say that it's HAM.
 prediction <- ifelse(spam$your > 0.5,"spam","nonspam")
 table(prediction,spam$type)/length(spam$type)
 ```
+
+5. Evaluation
+```[R]
+prediction nonspam   spam
+   nonspam  0.4590 0.1017
+   spam     0.1469 0.2923
+   ```
+Accuracy$ \approx 0.459 + 0.292 = 0.751$
+
