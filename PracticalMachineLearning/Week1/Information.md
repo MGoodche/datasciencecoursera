@@ -64,10 +64,13 @@ table(prediction,spam$type)/length(spam$type)
 ```
 
 5. Evaluation
+
 ```[R]
 prediction nonspam   spam
    nonspam  0.4590 0.1017
    spam     0.1469 0.2923
    ```
-Accuracy$ \approx 0.459 + 0.292 = 0.751$
+Accuracy = 0.459 + 0.292 = 0.751
+
+So our prediction algorithm is about 75% accurate in this particular case. So that's how we would evaluate the algorithm. 
 
