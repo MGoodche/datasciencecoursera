@@ -16,9 +16,8 @@ Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible t
 Click on links here to quickly view tasks completed in this assignment:
 
 1.  [Load the data and perform some basic preprocess of the data.](#point1)
-2.  [Provide a basic summary of the data.](#point2) 
-3.  [Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering).](#point3) 
-4.  [State your conclusions and the assumptions needed for your conclusions.](#point4) 
+2.  [Prediction using random forest.](#point2) 
+ 
 
 ## Data
 
@@ -92,7 +91,7 @@ dim(training2); dim(probing)
 
  [Back to top](#top)
 
-### <a name="point2"></a>2. Prediction model1 random forest
+### <a name="point2"></a>2. Prediction using random forest
 
 
 Now, the summary of the prediction:
